@@ -7,6 +7,12 @@ assignees: ''
 
 ---
 
+# Description
+
+## Progress
+
 - [ ] 기술 명세서 작성
 - [ ] 로직 구현
 - [ ] API 명세서 작성
+
+### Related content
