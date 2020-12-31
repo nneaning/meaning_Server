@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) =>
   sequelize.define(
-    'USER_TB',
+    'User',
     {
       email: {
         type: DataTypes.STRING(30),
@@ -15,17 +15,25 @@ module.exports = (sequelize, DataTypes) =>
         type: DataTypes.STRING(200),
         allowNull: false,
       },
+      nickName: {
+        type: DataTypes.STRING(45),
+        allowNull: true
+      },
+      wakeUpTime: {
+        type: DataTypes.DATE,
+        allowNull: false
+      },
       salt: {
         type: DataTypes.STRING(200),
         allowNull: false,
       },
       refreshToken: {
         type: DataTypes.STRING(300),
-        allowNull: true,
+        allowNull: false,
       },
     },
     {
-      underscored: true,
+      underscored: false,
       freezeTableName: true,
       timestamps: true,
     },
