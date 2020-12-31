@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) =>
       groupImageUrl: {
         type: DataTypes.STRING(100),
         allowNull: true
+      },
+      maximumMemberNumber: {
+        type: DataTypes.INTEGER,
+        allowNull: false
       }
     },
     {
