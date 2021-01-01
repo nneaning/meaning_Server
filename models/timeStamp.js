@@ -8,16 +8,16 @@ module.exports = (sequelize, DataTypes) =>
       },
       timeStampImageUrl: {
         type: DataTypes.STRING(200),
-        allowNull: false
+        allowNull: false,
       },
       status: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       timeStampContents: {
         type: DataTypes.STRING(200),
-        allowNull: false
-      }
+        allowNull: false,
+      },
     },
     {
       underscored: false,
