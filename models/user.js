@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) =>
         allowNull: false,
       },
       password: {
-        type: DataTypes.STRING(200),
+        type: DataTypes.STRING(50),
         allowNull: false,
       },
       nickName: {
@@ -24,11 +24,11 @@ module.exports = (sequelize, DataTypes) =>
         allowNull: false,
       },
       salt: {
-        type: DataTypes.STRING(200),
+        type: DataTypes.STRING(100),
         allowNull: false,
       },
       refreshToken: {
-        type: DataTypes.STRING(300),
+        type: DataTypes.STRING(100),
         allowNull: false,
       },
     },
