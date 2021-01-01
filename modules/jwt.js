@@ -39,14 +39,14 @@ module.exports = {
     }
     return decoded;
   },
-  refresh: async refreshToken => {
+  refresh: async refreshtoken => {
     try {
-      const result = jwt.verify(refreshToken, secretKey);
+      const result = jwt.verify(refreshtoken, secretKey);
       if (result.id === undefined) {
         return TOKEN_INVALID;
       }
       const user = await userService.checkUserId(result.id);
-      if (refreshToken !== user.refreshToken) {
+      if (refreshtoken !== user.refreshToken) {
         console.log('invalid refresh token');
         return TOKEN_INVALID;
       }

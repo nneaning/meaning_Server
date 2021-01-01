@@ -4,7 +4,7 @@ const crypto = require('crypto');
 const { User } = require('../models');
 
 module.exports = {
-  checkEmail: async email => {
+  checkEmail: async (email) => {
     try {
       const alreadyEmail = await User.findOne({
         where: {
@@ -66,7 +66,7 @@ module.exports = {
       throw err;
     }
   },
-  checkUserId: async id => {
+  checkUserId: async (id) => {
     try {
       const findByIdUser = await User.findOne({
         where: {
