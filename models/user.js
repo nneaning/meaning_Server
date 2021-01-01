@@ -17,11 +17,11 @@ module.exports = (sequelize, DataTypes) =>
       },
       nickName: {
         type: DataTypes.STRING(45),
-        allowNull: true
+        allowNull: true,
       },
       wakeUpTime: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: false,
       },
       salt: {
         type: DataTypes.STRING(200),

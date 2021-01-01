@@ -5,11 +5,11 @@ module.exports = (sequelize, DataTypes) =>
       diaryContents: {
         type: DataTypes.STRING(200),
         allowNull: false,
-      }
+      },
     },
     {
       underscored: false,
       freezeTableName: true,
       timestamps: true,
-    }
+    },
   );
