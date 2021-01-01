@@ -9,9 +9,9 @@ const userService = require('../service/userService');
 
 module.exports = {
   signup: async (req, res) => {
-    const { email, name, password } = req.body;
+    const { email, userName, password } = req.body;
 
-    if (!email || !name || !password) {
+    if (!email || !userName || !password) {
       console.log('필요한 값이 없습니다!');
       return res
         .status(statusCode.BAD_REQUEST)
@@ -29,7 +29,7 @@ module.exports = {
           );
       }
 
-      const user = await userService.signup(email, name, password);
+      const user = await userService.signup(email, userName, password);
 
       return res.status(statusCode.OK).send(
         util.success(statusCode.OK, responseMessage.SIGN_UP_SUCCESS, {

@@ -54,8 +54,13 @@ module.exports = {
         id: user.id,
         name: user.userName,
       };
-      const accessToken = jwt.sign(payload, secretKey, options);
-      return accessToken;
+      const dto = {
+        accessToken: jwt.sign(payload, secretKey, options),
+        refreshToken: jwt.sign(payload, secretKey, refreshOptions),
+      };
+
+      await userService.updateRefreshToken(user.id, dto.refreshToken);
+      return dto;
     } catch (err) {
       if (err.message === 'jwt expired') {
         console.log('expired token');

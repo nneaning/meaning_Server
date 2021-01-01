@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) =>
         allowNull: false,
       },
       password: {
-        type: DataTypes.STRING(200),
+        type: DataTypes.STRING(50),
         allowNull: false,
       },
       nickName: {
@@ -21,15 +21,15 @@ module.exports = (sequelize, DataTypes) =>
       },
       wakeUpTime: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
       },
       salt: {
-        type: DataTypes.STRING(200),
+        type: DataTypes.STRING(100),
         allowNull: false,
       },
       refreshToken: {
-        type: DataTypes.STRING(300),
-        allowNull: false,
+        type: DataTypes.STRING(100),
+        allowNull: true,
       },
     },
     {

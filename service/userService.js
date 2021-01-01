@@ -4,7 +4,7 @@ const crypto = require('crypto');
 const { User } = require('../models');
 
 module.exports = {
-  checkEmail: async email => {
+  checkEmail: async (email) => {
     try {
       const alreadyEmail = await User.findOne({
         where: {
@@ -16,7 +16,7 @@ module.exports = {
       throw err;
     }
   },
-  signup: async (email, name, password) => {
+  signup: async (email, userName, password) => {
     try {
       const salt = crypto.randomBytes(64).toString('base64');
       const hashedPassword = crypto
@@ -24,7 +24,7 @@ module.exports = {
         .toString('base64');
       const user = await User.create({
         email,
-        userName: name,
+        userName,
         password: hashedPassword,
         salt,
       });
@@ -66,7 +66,7 @@ module.exports = {
       throw err;
     }
   },
-  checkUserId: async id => {
+  checkUserId: async (id) => {
     try {
       const findByIdUser = await User.findOne({
         where: {
