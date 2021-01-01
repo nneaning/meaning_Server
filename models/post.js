@@ -7,5 +7,5 @@ module.exports = (sequelize, DataTypes) =>
       underscored: false,
       freezeTableName: true,
       timestamps: true,
-    }
+    },
   );
