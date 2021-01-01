@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) =>
       },
       wakeUpTime: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: true,
       },
       salt: {
         type: DataTypes.STRING(100),
@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) =>
       },
       refreshToken: {
         type: DataTypes.STRING(100),
-        allowNull: false,
+        allowNull: true,
       },
     },
     {

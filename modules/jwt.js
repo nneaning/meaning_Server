@@ -39,14 +39,14 @@ module.exports = {
     }
     return decoded;
   },
-  refresh: async refreshtoken => {
+  refresh: async refreshToken => {
     try {
-      const result = jwt.verify(refreshtoken, secretKey);
+      const result = jwt.verify(refreshToken, secretKey);
       if (result.id === undefined) {
         return TOKEN_INVALID;
       }
       const user = await userService.checkUserId(result.id);
-      if (refreshtoken !== user.refreshToken) {
+      if (refreshToken !== user.refreshToken) {
         console.log('invalid refresh token');
         return TOKEN_INVALID;
       }
@@ -54,8 +54,13 @@ module.exports = {
         id: user.id,
         name: user.userName,
       };
-      const accessToken = jwt.sign(payload, secretKey, options);
-      return accessToken;
+      const dto = {
+        accessToken: jwt.sign(payload, secretKey, options),
+        refreshToken: jwt.sign(payload, secretKey, refreshOptions),
+      };
+
+      await userService.updateRefreshToken(user.id, dto.refreshToken);
+      return dto;
     } catch (err) {
       if (err.message === 'jwt expired') {
         console.log('expired token');

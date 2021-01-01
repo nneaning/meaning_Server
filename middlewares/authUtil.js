@@ -47,7 +47,7 @@ const isLoggedIn = {
   },
   reIssue: async (req, res) => {
     try {
-      const { refreshToken } = req.headers;
+      const { refreshtoken: refreshToken } = req.headers;
 
       if (!refreshToken) {
         return res

@@ -16,7 +16,7 @@ module.exports = {
       throw err;
     }
   },
-  signup: async (email, name, password) => {
+  signup: async (email, userName, password) => {
     try {
       const salt = crypto.randomBytes(64).toString('base64');
       const hashedPassword = crypto
@@ -24,7 +24,7 @@ module.exports = {
         .toString('base64');
       const user = await User.create({
         email,
-        userName: name,
+        userName,
         password: hashedPassword,
         salt,
       });
