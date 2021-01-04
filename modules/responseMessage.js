@@ -61,6 +61,9 @@ module.exports = {
   NO_VIDEO: '존재하지않는 비디오 id 입니다.',
   CREATE_POST_HISTORY_SUCCESS: '시청기록 생성 완료',
   CREATE_POST_HISTORY_fail: '시청기록 생성 실패',
+  
+  /* 타임스탬프 */
+  INVALID_DATETIME_FORMAT: '유효하지 않은 날짜, 시간 정보 포맷입니다',
 
   /* 서버에러 */
   INTERNAL_SERVER_ERROR: '서버 내부 오류',
