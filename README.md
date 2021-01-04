@@ -15,9 +15,8 @@
 | **contact** : epitoneplus@gmail.com </br> **github**: [epitone](https://github.com/epitoneproject)|**contact** : kkm97351@gmail.com </br> **github**: [tributetothemoon](https://github.com/tributetothemoon)
 | ![sprint1](https://img.shields.io/badge/Meaning-sprint1-red) |![sprint1](https://img.shields.io/badge/Meaning-sprint1-red)  | 
 |RDB 설계, 배포환경구축 |RDB 설계, 배포환경구축 |
-|회원가입, 로그인, 토큰 발급  | 타임스탬프 |
-| | |
-
+|회원가입, 로그인, 토큰 발급,  | 타임스탬프, 타임스탬프 상세보기 |
+|온보드, 마이페이지| 그룹 리스트, 그룹 상세보기|
 
 </br>
 </br>
@@ -27,18 +26,18 @@
 
  **Setting** |  | **Introduction**| |**Communication**| |**Service**| |
  :---: | :---: | :---: | :---: |:---:|:---:|:---:|:---:
- 0 | [개발 환경](#개발-환경)| 1 | [서비스 소개](#서비스-소개) |6 | [우리가 일하는 방법](#우리가-일하는-방법) |7 | [Dependencies](#Dependencies)
+ 0 | [개발환경](#개발-환경)| 1 | [서비스소개](#서비스-소개) |6 | [우리가 일하는 방법](#우리가-일하는-방법) |7 | [Dependencies](#Dependencies)
  |||2| [핵심 기능](#핵심-기능)|6-1 | [핵심가치](#핵심가치) |8 | [ER Diagram](#ER-Diagram) 
  |||3|[Work Flow](#work-flow)|6-2 | [칸반보드](#칸반보드) |9 | [Library](#Library)
-|||4|[기능 명세서](#기능-명세서)|6-3|[컨벤션 설정](#컨벤션-설정) | | 
-|||5|[API 명세서](#api-명세서)|| | |  |
-|||||||||
+|||4|[기능명세서](#기능-명세서)|6-3|[컨벤션 설정](#컨벤션-설정) | | 
+|||5|[API명세서](#api-명세서)|| | |  |
+
 
 <br>
 <br>
 <br>
 
-# 개발 환경  
+# 💻 개발 환경  
 ![박상수](https://img.shields.io/badge/Developer-%EB%B0%95%EC%83%81%EC%88%98-blue)
 ![김기문](https://img.shields.io/badge/Developer-%EA%B9%80%EA%B8%B0%EB%AC%B8-blue)
 [![Meaning](https://img.shields.io/badge/Meaning-Server-blue)](https://github.com/nneaning/meaning_Server)
@@ -112,7 +111,7 @@
 </br>
 </br>
 
-# Work Flow 
+# ⚡️ Work Flow 
 
 -  추가 예정
 
@@ -137,9 +136,9 @@
 </br>
 </br>
 
-# 우리가 일하는 방법
+# 👬 우리가 일하는 방법
 
-## 핵심가치
+## 👏🏻 핵심가치
 
 - [📔 Meaning Notion Link](https://www.notion.so/2d8b9dfc287844e8a3de195b637caec4)
 
@@ -147,7 +146,7 @@
 </br>
 </br>
 
-## 칸반보드 
+## 🎯 칸반보드 
 
 - [🧑🏻‍💻 서버팀 칸반보드](https://www.notion.so/a4317dc11b60486eaa2300983b7b3585)
 
@@ -155,7 +154,7 @@
 </br>
 
 
-## 컨벤션 설정
+## 🕶 컨벤션 설정
 
 - [👏🏻 협업을 위한 코드 컨벤션 설정하기](https://overcome-the-limits.tistory.com/entry/%ED%98%91%EC%97%85-%ED%98%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%BD%94%EB%93%9C-%EC%BB%A8%EB%B2%A4%EC%85%98-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0)
 
@@ -175,7 +174,7 @@
 
 
 
-# Dependencies
+# 🛠 Dependencies
 
 ```
 "dependencies": {
@@ -206,7 +205,7 @@
 
 </br>
 
-# ER-Diagram
+# 💥 ER-Diagram
 
 <img src="https://user-images.githubusercontent.com/59385491/103462959-3ec77d80-4d6c-11eb-9313-59f30d12b778.png" height=700>
 
