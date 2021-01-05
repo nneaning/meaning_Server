@@ -15,8 +15,8 @@
 | **contact** : epitoneplus@gmail.com </br> **github**: [epitone](https://github.com/epitoneproject)|**contact** : kkm97351@gmail.com </br> **github**: [tributetothemoon](https://github.com/tributetothemoon)
 | ![sprint1](https://img.shields.io/badge/Meaning-sprint1-red) |![sprint1](https://img.shields.io/badge/Meaning-sprint1-red)  | 
 |RDB 설계, 배포환경구축 |RDB 설계, 배포환경구축 |
-|회원가입, 로그인, 토큰 발급  | 타임스탬프, 타임스탬프 상세보기 |
-|온보드, 마이페이지| 그룹 리스트, 그룹 상세보기|
+|회원가입, 로그인, 토큰 발급, 마이페이지 | 타임스탬프, 타임스탬프 상세보기, 온보드 |
+|그룹리스트, 그룹 상세보기|그룹 참가신청, 그룹 생성|
 
 </br>
 </br>
