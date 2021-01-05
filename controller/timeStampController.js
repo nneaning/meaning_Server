@@ -7,6 +7,8 @@ const util = require('../modules/util');
 const responseMessage = require('../modules/responseMessage');
 const statusCode = require('../modules/statusCode');
 
+const missionStatus = require('../modules/missionStatus');
+
 const userService = require('../service/userService');
 const timeStampService = require('../service/timeStampService');
 
@@ -34,17 +36,18 @@ module.exports = {
 
       let status;
       if (timeDiff <= 0) {
-        status = 1; // success
+        status = missionStatus.SUCCESS; // success
       } else {
-        status = 0; // late
+        status = missionStatus.LATE; // late
       }
 
-      const missionComplete = ((x) => {
-        if (x === 1) {
-          return 'success';
-        }
-        return 'late';
-      })(status);
+      let missionStatusMessage;
+      if (status === missionStatus.SUCCESS) {
+        missionStatusMessage = 'success';
+      }
+      if (status === missionStatus.LATE) {
+        missionStatusMessage = 'late';
+      }
 
       const timeStamp = await timeStampService.createTimeStamp(
         user.id,
@@ -63,7 +66,7 @@ module.exports = {
             {
               timeStampId: timeStamp.id,
               dateTime: timeStamp.dateTime,
-              missionComplete,
+              missionStatusMessage,
               timeStampImageUrl,
               timeStampContents,
             },
