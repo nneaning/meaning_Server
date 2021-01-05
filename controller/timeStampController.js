@@ -15,7 +15,8 @@ const timeStampService = require('../service/timeStampService');
 module.exports = {
   createTimeStamp: async (req, res) => {
     try {
-      const user = await userService.checkUserId(req.decoded.id);
+      const userId = req.decoded.id;
+      const wakeUpTime = await userService.getWakeUpTime(req.decoded.id);
       const timeStampImageUrl = req.file.location;
       const { dateTime, timeStampContents } = req.body;
 
@@ -30,7 +31,7 @@ module.exports = {
           );
       }
 
-      const targetTime = dayjs(`${dayjs().format(dateTimeFormat.DATE)} ${user.wakeUpTime}`);
+      const targetTime = dayjs(`${dayjs().format(dateTimeFormat.DATE)} ${wakeUpTime}`);
       const requestedTime = dayjs(dateTime);
       const timeDifference = dayjs.duration(requestedTime.diff(targetTime)).asMinutes();
 
@@ -50,7 +51,7 @@ module.exports = {
       }
 
       const timeStamp = await timeStampService.createTimeStamp(
-        user.id,
+        userId,
         timeStampMissionStatus,
         dateTime,
         timeStampImageUrl,

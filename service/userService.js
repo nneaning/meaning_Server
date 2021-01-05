@@ -79,4 +79,17 @@ module.exports = {
       throw err;
     }
   },
+  getWakeUpTime: async (id) => {
+    try {
+      const wakeUpTime = await User.findOne({
+        where: {
+          id,
+        },
+        attributes: ['wakeUpTime'],
+      });
+      return wakeUpTime;
+    } catch (err) {
+      throw err;
+    }
+  },
 };
