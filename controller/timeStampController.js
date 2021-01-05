@@ -65,10 +65,7 @@ module.exports = {
             responseMessage.CREATE_TIMESTAMP_SUCCESS,
             {
               timeStampId: timeStamp.id,
-              dateTime: timeStamp.dateTime,
               missionStatusMessage,
-              timeStampImageUrl,
-              timeStampContents,
             },
           ),
         );
