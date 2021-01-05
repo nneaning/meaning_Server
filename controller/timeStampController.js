@@ -32,26 +32,26 @@ module.exports = {
 
       const targetTime = dayjs(`${dayjs().format(dateTimeFormat.DATE)} ${user.wakeUpTime}`);
       const requestedTime = dayjs(dateTime);
-      const timeDiff = dayjs.duration(requestedTime.diff(targetTime)).asMinutes();
+      const timeDifference = dayjs.duration(requestedTime.diff(targetTime)).asMinutes();
 
-      let status;
-      if (timeDiff <= 0) {
-        status = missionStatus.SUCCESS; // success
+      let timeStampMissionStatus;
+      if (timeDifference <= 0) {
+        timeStampMissionStatus = missionStatus.SUCCESS; // success
       } else {
-        status = missionStatus.LATE; // late
+        timeStampMissionStatus = missionStatus.LATE; // late
       }
 
       let missionStatusMessage;
-      if (status === missionStatus.SUCCESS) {
+      if (timeStampMissionStatus === missionStatus.SUCCESS) {
         missionStatusMessage = 'success';
       }
-      if (status === missionStatus.LATE) {
+      if (timeStampMissionStatus === missionStatus.LATE) {
         missionStatusMessage = 'late';
       }
 
       const timeStamp = await timeStampService.createTimeStamp(
         user.id,
-        status,
+        timeStampMissionStatus,
         dateTime,
         timeStampImageUrl,
         timeStampContents,
