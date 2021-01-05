@@ -81,7 +81,7 @@ module.exports = {
   },
   getWakeUpTime: async (id) => {
     try {
-      const wakeUpTime = await User.findOne({
+      const { wakeUpTime } = await User.findOne({
         where: {
           id,
         },
