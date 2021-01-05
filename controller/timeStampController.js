@@ -1,19 +1,23 @@
 const dayjs = require('dayjs');
 dayjs.extend(require('dayjs/plugin/customParseFormat'));
+dayjs.extend(require('dayjs/plugin/duration'));
 const dateTimeFormat = require('../modules/dateTimeFormat');
 
 const util = require('../modules/util');
 const responseMessage = require('../modules/responseMessage');
 const statusCode = require('../modules/statusCode');
 
+const userService = require('../service/userService');
+const timeStampService = require('../service/timeStampService');
+
 module.exports = {
   createTimeStamp: async (req, res) => {
     try {
-      const userId = req.decoded.id;
+      const user = await userService.checkUserId(req.decoded.id);
       const timeStampImageUrl = req.file.location;
-      const { datetime, timeStampContents } = req.body;
+      const { dateTime, timeStampContents } = req.body;
 
-      if (!dayjs(datetime, dateTimeFormat.DATETIME, true).isValid()) {
+      if (!dayjs(dateTime, dateTimeFormat.DATETIME).isValid()) { // check valid format
         return res
           .status(statusCode.BAD_REQUEST)
           .send(
@@ -24,13 +28,45 @@ module.exports = {
           );
       }
 
+      const targetTime = dayjs(`${dayjs().format(dateTimeFormat.DATE)} ${user.wakeUpTime}`);
+      const requestedTime = dayjs(dateTime);
+      const timeDiff = dayjs.duration(requestedTime.diff(targetTime)).asMinutes();
+
+      let status;
+      if (timeDiff <= 0) {
+        status = 1; // success
+      } else {
+        status = 0; // late
+      }
+
+      const missionComplete = ((x) => {
+        if (x === 1) {
+          return 'success';
+        }
+        return 'late';
+      })(status);
+
+      const timeStamp = await timeStampService.createTimeStamp(
+        user.id,
+        status,
+        dateTime,
+        timeStampImageUrl,
+        timeStampContents,
+      );
+
       return res
         .status(statusCode.OK)
         .send(
           util.success(
             statusCode.OK,
-            '타임스탬프 이미지 S3 업로드 완료', // 임시 response message
-            timeStampImageUrl,
+            responseMessage.CREATE_TIMESTAMP_SUCCESS,
+            {
+              timeStampId: timeStamp.id,
+              dateTime: timeStamp.dateTime,
+              missionComplete,
+              timeStampImageUrl,
+              timeStampContents,
+            },
           ),
         );
     } catch (error) {

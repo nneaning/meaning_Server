@@ -63,6 +63,7 @@ module.exports = {
   CREATE_POST_HISTORY_fail: '시청기록 생성 실패',
   
   /* 타임스탬프 */
+  CREATE_TIMESTAMP_SUCCESS: '타임스탬프 생성 완료',
   INVALID_DATETIME_FORMAT: '유효하지 않은 날짜, 시간 정보 포맷입니다',
 
   /* 서버에러 */
