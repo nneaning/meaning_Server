@@ -1,13 +1,10 @@
-const dayjs = require('dayjs');
-dayjs.extend(require('dayjs/plugin/customParseFormat'));
-dayjs.extend(require('dayjs/plugin/duration'));
-const dateTimeFormat = require('../modules/dateTimeFormat');
-
 const util = require('../modules/util');
 const responseMessage = require('../modules/responseMessage');
 const statusCode = require('../modules/statusCode');
 
 const missionStatus = require('../modules/missionStatus');
+const { dayjs } = require('../modules/dateTimeModule');
+const dateTimeModule = require('../modules/dateTimeModule');
 
 const userService = require('../service/userService');
 const timeStampService = require('../service/timeStampService');
@@ -16,11 +13,11 @@ module.exports = {
   createTimeStamp: async (req, res) => {
     try {
       const userId = req.decoded.id;
-      const wakeUpTime = await userService.getWakeUpTime(req.decoded.id);
+      const wakeUpTime = await userService.getWakeUpTime(userId);
       const timeStampImageUrl = req.file.location;
       const { dateTime, timeStampContents } = req.body;
 
-      if (!dayjs(dateTime, dateTimeFormat.DATETIME).isValid()) { // check valid format
+      if (!dateTimeModule.checkValidDateTimeFormat(dateTime)) { // check valid format
         return res
           .status(statusCode.BAD_REQUEST)
           .send(
@@ -31,9 +28,9 @@ module.exports = {
           );
       }
 
-      const targetTime = dayjs(`${dayjs().format(dateTimeFormat.DATE)} ${wakeUpTime}`);
+      const targetTime = dayjs(`${dayjs().format(dateTimeModule.FORMAT_DATE)} ${wakeUpTime}`);
       const requestedTime = dayjs(dateTime);
-      const timeDifference = dayjs.duration(requestedTime.diff(targetTime)).asMinutes();
+      const timeDifference = dateTimeModule.getTimeDifference(requestedTime, targetTime);
 
       let timeStampMissionStatus;
       if (timeDifference <= 0) {
