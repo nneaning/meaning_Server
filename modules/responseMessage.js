@@ -64,6 +64,7 @@ module.exports = {
   
   /* 타임스탬프 */
   CREATE_TIMESTAMP_SUCCESS: '타임스탬프 생성 완료',
+  CREATE_TIMESTAMP_FAIL: '타임스탬프 생성 실패',
   INVALID_DATETIME_FORMAT: '유효하지 않은 날짜, 시간 정보 포맷입니다',
 
   /* 서버에러 */
