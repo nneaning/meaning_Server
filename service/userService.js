@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-catch */
 
 const crypto = require('crypto');
-const { User } = require('../models');
+const { User, TimeStamp } = require('../models');
 
 module.exports = {
   checkEmail: async (email) => {
@@ -66,15 +66,31 @@ module.exports = {
       throw err;
     }
   },
-  checkUserId: async (id) => {
+  getMyPage: async (offset, id) => {
     try {
-      const findByIdUser = await User.findOne({
+      const getMyPage = await TimeStamp.findAll({
+        offset,
+        limit: 18,
+        order: [['createdAt', 'DESC']],
         where: {
-          id,
+          UserId: id,
         },
-        attributes: { exclude: ['password', 'salt'] },
+        attributes: ['id', 'timeStampImageUrl', 'timeStampContents', 'createdAt'],
       });
-      return findByIdUser;
+      return getMyPage;
+    } catch (err) {
+      throw err;
+    }
+  },
+  getMySuccessDay: async (id) => {
+    try {
+      const getMySuccessDay = await TimeStamp.findAll({
+        where: {
+          UserId: id,
+        },
+        attributes: ['status'],
+      });
+      return getMySuccessDay;
     } catch (err) {
       throw err;
     }
