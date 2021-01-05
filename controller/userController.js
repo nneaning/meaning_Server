@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 /* eslint-disable max-len */
 const jwt = require('../modules/jwt');
 
@@ -94,6 +95,34 @@ module.exports = {
       res
         .status(statusCode.INTERNAL_SERVER_ERROR)
         .send(util.fail(statusCode.BAD_REQUEST, responseMessage.SIGN_IN_FAIL));
+    }
+  },
+  getMyPage: async (req, res) => {
+    const { id } = req.decoded;
+    const { offset } = req.query;
+
+    if (!offset) {
+      console.log('필요한 쿼리값이 없습니다.');
+      res
+        .status(statusCode.BAD_REQUEST)
+        .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
+    }
+
+    try {
+      const getMyPage = await userService.getMyPage(Number(offset), id);
+      const getMySuccessDay = await userService.getMySuccessDay(id);
+
+      let successDays = 0;
+
+      getMySuccessDay.forEach((day) =>
+        successDays += day.status);
+
+      return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_TIMESTAMP_ALL_SUCCESS, { successDays, getMyPage }));
+    } catch (error) {
+      console.log(error);
+      res
+        .status(statusCode.INTERNAL_SERVER_ERROR)
+        .send(util.fail(statusCode.BAD_REQUEST, responseMessage.READ_TIMESTAMP_ALL_FAIL));
     }
   },
 };
