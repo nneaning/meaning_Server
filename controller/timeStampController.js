@@ -17,6 +17,17 @@ module.exports = {
       const timeStampImageUrl = req.file.location;
       const { dateTime, timeStampContents } = req.body;
 
+      if (!dateTime || !timeStampContents || !timeStampImageUrl) {
+        return res
+          .status(statusCode.BAD_REQUEST)
+          .send(
+            util.fail(
+              statusCode.BAD_REQUEST,
+              responseMessage.NULL_VALUE,
+            ),
+          );
+      }
+
       if (!dateTimeModule.checkValidDateTimeFormat(dateTime)) { // check valid format
         return res
           .status(statusCode.BAD_REQUEST)
