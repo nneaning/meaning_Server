@@ -1,8 +1,9 @@
+/* eslint-disable import/no-unresolved */
 const express = require('express');
 
 const router = express.Router();
-const userController = require('../../controller/userController');
-const isLoggedIn = require('../../middlewares/authUtil');
+const userController = require('../controller/userController');
+const isLoggedIn = require('../middlewares/authUtil');
 
 router.post('/signup', userController.signup);
 router.post('/signin', userController.signin);

@@ -1,11 +1,11 @@
 module.exports = (sequelize) =>
   sequelize.define(
-    'Post',
+    'GroupProfile',
     {
     },
     {
       underscored: false,
       freezeTableName: true,
-      timestamps: true,
+      timestamps: false,
     },
   );
