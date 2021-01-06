@@ -22,6 +22,7 @@ module.exports = {
   CREATE_TIMESTAMP_FAIL: '타임스탬프 생성 실패',
   READ_TIMESTAMP_ALL_SUCCESS: '전체 타임스탬프 조회 성공',
   READ_TIMESTAMP_ALL_FAIL: '전체 타임스탬프 조회 실패',
+  INVALID_DATETIME_FORMAT: '유효하지 않은 날짜, 시간 정보 포맷입니다',
 
   /* 토큰 */
   EMPTY_TOKEN: '토큰 값이 없습니다.',
@@ -30,6 +31,8 @@ module.exports = {
   AUTH_SUCCESS: '인증에 성공했습니다.',
   ISSUE_SUCCESS: '새로운 토큰이 생성되었습니다.',
 
+  
+  
   /* 서버에러 */
   INTERNAL_SERVER_ERROR: '서버 내부 오류',
 };

@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) =>
   sequelize.define(
     'TimeStamp',
     {
-      time: {
+      dateTime: {
         type: DataTypes.DATE,
         allowNull: false,
       },

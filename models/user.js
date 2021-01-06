@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) =>
         allowNull: true,
       },
       wakeUpTime: {
-        type: DataTypes.DATE,
+        type: DataTypes.TIME,
         allowNull: true,
       },
       salt: {
