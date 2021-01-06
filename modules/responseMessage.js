@@ -10,6 +10,11 @@ module.exports = {
   SIGN_IN_SUCCESS: '로그인 성공.',
   SIGN_IN_FAIL: '로그인 실패.',
 
+  /* 온보드 정보 등록 */
+  UPDATE_ONBOARD_SUCCESS: '온보드 정보 등록 성공',
+  UPDATE_ONBOARD_FAIL: '온보드 정보 등록 실패',
+  INVALID_TIME_FORMAT: '유효하지 않은 시간 정보 포맷입니다.',
+
   /* 회원관리 */
   ALREADY_ID: '존재하는 ID 입니다.',
   NO_USER: '존재하지않는 유저 id 입니다.',
