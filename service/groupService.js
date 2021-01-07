@@ -26,22 +26,10 @@ module.exports = {
       throw err;
     }
   },
-  createHostMember: async (id, groupId) => {
-    try {
-      const makeHostMember = await Member.create({
-        isHost: 1,
-        UserId: id,
-        GroupId: groupId,
-      });
-      return makeHostMember;
-    } catch (err) {
-      throw err;
-    }
-  },
-  createMember: async (id, groupId) => {
+  createMember: async (id, groupId, isHost) => {
     try {
       const makeMember = await Member.create({
-        isHost: 0,
+        isHost,
         UserId: id,
         GroupId: groupId,
       });
