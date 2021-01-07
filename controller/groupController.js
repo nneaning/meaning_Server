@@ -20,9 +20,9 @@ module.exports = {
         .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
     }
     try {
-      const checkGroupId = await groupService.checkGroupId(id);
+      const checkMemberId = await groupService.checkMemberId(id);
 
-      if (checkGroupId) {
+      if (checkMemberId) {
         console.log('소속된 그룹이 이미 있습니다.');
         return res
           .status(statusCode.BAD_REQUEST)

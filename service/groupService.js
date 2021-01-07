@@ -14,14 +14,14 @@ module.exports = {
       throw err;
     }
   },
-  checkGroupId: async (id) => {
+  checkMemberId: async (id) => {
     try {
-      const findGroupId = await Member.findOne({
+      const findMemberId = await Member.findOne({
         where: {
           UserId: id,
         },
       });
-      return findGroupId;
+      return findMemberId;
     } catch (err) {
       throw err;
     }
