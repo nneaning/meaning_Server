@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-catch */
-const { Group, Member } = require('../models');
+const { Group, Member, GroupImage } = require('../models');
 
 module.exports = {
   createGroup: async (groupName, maximumMemberNumber, introduction) => {
@@ -34,6 +34,17 @@ module.exports = {
         GroupId: groupId,
       });
       return makeMember;
+    } catch (err) {
+      throw err;
+    }
+  },
+  createGroupImage: async (groupImageName, groupImageUrl) => {
+    try {
+      const uploadGroupImage = await GroupImage.create({
+        groupImageName,
+        groupImageUrl,
+      });
+      return uploadGroupImage;
     } catch (err) {
       throw err;
     }

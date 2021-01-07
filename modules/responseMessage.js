@@ -36,6 +36,10 @@ module.exports = {
   JOIN_GROUP_SUCCESS: '그룹 참가 완료',
   JOIN_GROUP_FAIL: '그룹 참가 실패',
 
+  /* 그룹 이미지 등록 */
+  CREATE_GROUPIMAGE_SUCCESS: '그룹 이미지 등록 완료',
+  CREATE_GROUPIMAGE_FAIL: '그룹 이미지 등록 실패',
+
   /* 토큰 */
   EMPTY_TOKEN: '토큰 값이 없습니다.',
   EXPIRED_TOKEN: '토큰 값이 만료되었습니다.',
