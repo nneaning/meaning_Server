@@ -30,17 +30,16 @@ db.Group = require('./group')(sequelize, Sequelize);
 db.Member = require('./member')(sequelize, Sequelize);
 db.Post = require('./post')(sequelize, Sequelize);
 
-
 /** 1 : N   User : Diary */
 db.User.hasMany(db.Diary, { onDelete: 'cascade' });
 db.Diary.belongsTo(db.User);
 
 /** 1 : N   User : BookComment */
-db.User.hasMany(db.BookComment, {onDelete: 'cascade' })
+db.User.hasMany(db.BookComment, { onDelete: 'cascade' });
 db.BookComment.belongsTo(db.User);
 
 /** 1 : N   User : TimeStamp */
-db.User.hasMany(db.TimeStamp, {onDelete: 'cascade' })
+db.User.hasMany(db.TimeStamp, { onDelete: 'cascade' });
 db.TimeStamp.belongsTo(db.User);
 
 /** N : M   User : Group => Member */

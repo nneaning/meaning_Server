@@ -23,6 +23,11 @@ module.exports = {
   READ_TIMESTAMP_ALL_SUCCESS: '전체 타임스탬프 조회 성공',
   READ_TIMESTAMP_ALL_FAIL: '전체 타임스탬프 조회 실패',
 
+  /* 그룹 */
+  CREATE_GROUP_SUCCESS: '그룹 생성 완료',
+  CREATE_GROUP_FAIL: '그룹 생성 실패',
+  ALREADY_CREATED_GROUP: '이미 생성한 그룹 입니다.',
+
   /* 토큰 */
   EMPTY_TOKEN: '토큰 값이 없습니다.',
   EXPIRED_TOKEN: '토큰 값이 만료되었습니다.',
