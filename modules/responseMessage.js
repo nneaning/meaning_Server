@@ -34,6 +34,10 @@ module.exports = {
   CREATE_GROUP_FAIL: '그룹 생성 실패',
   ALREADY_GROUP: '이미 그룹에 속해 있습니다.',
 
+  /* 그룹 이미지 등록 */
+  CREATE_GROUPIMAGE_SUCCESS: '그룹 이미지 등록 완료',
+  CREATE_GROUPIMAGE_FAIL: '그룹 이미지 등록 실패',
+
   /* 토큰 */
   EMPTY_TOKEN: '토큰 값이 없습니다.',
   EXPIRED_TOKEN: '토큰 값이 만료되었습니다.',
