@@ -4,6 +4,6 @@ const router = express.Router();
 const groupController = require('../controller/groupController');
 const isLoggedIn = require('../middlewares/authUtil');
 
-// router.get('/', isLoggedIn.checkToken, groupController.getGroupList);
+router.post('/', isLoggedIn.checkToken, groupController.createGroup);
 
 module.exports = router;

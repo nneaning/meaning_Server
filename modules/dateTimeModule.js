@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 const dayjs = require('dayjs');
 dayjs.extend(require('dayjs/plugin/customParseFormat'));
 dayjs.extend(require('dayjs/plugin/duration'));

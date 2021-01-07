@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) =>
   sequelize.define(
     'GroupImage',
     {
-      name: {
+      groupImageName: {
         type: DataTypes.STRING(20),
         allowNull: false,
       },
