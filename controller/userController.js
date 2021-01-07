@@ -34,8 +34,8 @@ module.exports = {
 
       const user = await userService.signup(email, userName, password);
 
-      return res.status(statusCode.OK).send(
-        util.success(statusCode.OK, responseMessage.SIGN_UP_SUCCESS, {
+      return res.status(statusCode.CREATED).send(
+        util.success(statusCode.CREATED, responseMessage.SIGN_UP_SUCCESS, {
           id: user.id,
           email: user.email,
           userName: user.userName,
