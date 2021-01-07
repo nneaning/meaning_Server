@@ -38,4 +38,16 @@ module.exports = {
       throw err;
     }
   },
+  createMember: async (id, groupId) => {
+    try {
+      const makeMember = await Member.create({
+        isHost: 0,
+        UserId: id,
+        GroupId: groupId,
+      });
+      return makeMember;
+    } catch (err) {
+      throw err;
+    }
+  },
 };

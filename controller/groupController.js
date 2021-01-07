@@ -26,18 +26,79 @@ module.exports = {
         console.log('소속된 그룹이 이미 있습니다.');
         return res
           .status(statusCode.BAD_REQUEST)
-          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_GROUP));
+          .send(
+            util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_GROUP),
+          );
       }
 
-      const createGroup = await groupService.createGroup(groupName, maximumMemberNumber, introduction);
+      const createGroup = await groupService.createGroup(
+        groupName,
+        maximumMemberNumber,
+        introduction,
+      );
       const groupId = createGroup.id;
 
       const createHostMember = await groupService.createHostMember(id, groupId);
 
-      return res.status(statusCode.CREATED).send(util.success(statusCode.CREATED, responseMessage.CREATE_GROUP_SUCCESS));
+      return res
+        .status(statusCode.CREATED)
+        .send(
+          util.success(
+            statusCode.CREATED,
+            responseMessage.CREATE_GROUP_SUCCESS,
+          ),
+        );
     } catch (error) {
       console.log(error);
-      return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.CREATE_GROUP_FAIL));
+      return res
+        .status(statusCode.INTERNAL_SERVER_ERROR)
+        .send(
+          util.fail(
+            statusCode.INTERNAL_SERVER_ERROR,
+            responseMessage.CREATE_GROUP_FAIL,
+          ),
+        );
+    }
+  },
+  joinGroup: async (req, res) => {
+    try {
+      const { id } = req.decoded;
+      const { groupId } = req.body;
+
+      if (!groupId) {
+        return res
+          .status(statusCode.BAD_REQUEST)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
+      }
+
+      const checkMemberId = await groupService.checkMemberId(id);
+
+      if (checkMemberId) {
+        console.log(responseMessage.ALREADY_GROUP);
+        return res
+          .status(statusCode.BAD_REQUEST)
+          .send(
+            util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_GROUP),
+          );
+      }
+
+      const createMember = await groupService.createMember(id, groupId);
+
+      return res
+        .status(statusCode.CREATED)
+        .send(
+          util.success(statusCode.CREATED, responseMessage.JOIN_GROUP_SUCCESS),
+        );
+    } catch (error) {
+      console.log(error);
+      return res
+        .status(statusCode.INTERNAL_SERVER_ERROR)
+        .send(
+          util.fail(
+            statusCode.INTERNAL_SERVER_ERROR,
+            responseMessage.JOIN_GROUP_FAIL,
+          ),
+        );
     }
   },
 };
