@@ -9,6 +9,8 @@ router.post('/signup', userController.signup);
 router.post('/signin', userController.signin);
 router.put('/refreshtoken', isLoggedIn.reIssue);
 
+router.put('/onboard', isLoggedIn.checkToken, userController.updateOnboard);
+
 router.get('/mypage', isLoggedIn.checkToken, userController.getMyPage);
 
 module.exports = router;

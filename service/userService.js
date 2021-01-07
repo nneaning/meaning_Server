@@ -1,10 +1,11 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-useless-catch */
 
 const crypto = require('crypto');
 const { User, TimeStamp } = require('../models');
 
 module.exports = {
-  checkEmail: async (email) => {
+  checkEmail: async email => {
     try {
       const alreadyEmail = await User.findOne({
         where: {
@@ -75,14 +76,19 @@ module.exports = {
         where: {
           UserId: id,
         },
-        attributes: ['id', 'timeStampImageUrl', 'timeStampContents', 'createdAt'],
+        attributes: [
+          'id',
+          'timeStampImageUrl',
+          'timeStampContents',
+          'createdAt',
+        ],
       });
       return getMyPage;
     } catch (err) {
       throw err;
     }
   },
-  getMySuccessDay: async (id) => {
+  getMySuccessDay: async id => {
     try {
       const getMySuccessDay = await TimeStamp.findAll({
         where: {
@@ -91,6 +97,37 @@ module.exports = {
         attributes: ['status'],
       });
       return getMySuccessDay;
+    } catch (err) {
+      throw err;
+    }
+  },
+  getWakeUpTime: async (id) => {
+    try {
+      const { wakeUpTime } = await User.findOne({
+        where: {
+          id,
+        },
+        attributes: ['wakeUpTime'],
+      });
+      return wakeUpTime;
+    } catch (err) {
+      throw err;
+    }
+  },
+  updateOnboard: async (id, nickName, wakeUpTime) => {
+    try {
+      const user = await User.update(
+        {
+          nickName,
+          wakeUpTime,
+        },
+        {
+          where: {
+            id,
+          },
+        },
+      );
+      return user;
     } catch (err) {
       throw err;
     }
