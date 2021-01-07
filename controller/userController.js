@@ -6,6 +6,8 @@ const util = require('../modules/util');
 const responseMessage = require('../modules/responseMessage');
 const statusCode = require('../modules/statusCode');
 
+const dateTimeModule = require('../modules/dateTimeModule');
+
 const userService = require('../service/userService');
 
 module.exports = {
@@ -114,15 +116,69 @@ module.exports = {
 
       let successDays = 0;
 
-      getMySuccessDay.forEach((day) =>
-        successDays += day.status);
+      getMySuccessDay.forEach(day => (successDays += day.status));
 
-      return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_TIMESTAMP_ALL_SUCCESS, { successDays, getMyPage }));
+      return res
+        .status(statusCode.OK)
+        .send(
+          util.success(
+            statusCode.OK,
+            responseMessage.READ_TIMESTAMP_ALL_SUCCESS,
+            { successDays, getMyPage },
+          ),
+        );
     } catch (error) {
       console.log(error);
       res
         .status(statusCode.INTERNAL_SERVER_ERROR)
-        .send(util.fail(statusCode.BAD_REQUEST, responseMessage.READ_TIMESTAMP_ALL_FAIL));
+        .send(
+          util.fail(
+            statusCode.BAD_REQUEST,
+            responseMessage.READ_TIMESTAMP_ALL_FAIL,
+          ),
+        );
+    }
+  },
+  updateOnboard: async (req, res) => {
+    try {
+      const { id } = req.decoded;
+      const { nickName, wakeUpTime } = req.body;
+
+      if (!nickName || !wakeUpTime) {
+        res
+          .status(statusCode.BAD_REQUEST)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
+      }
+
+      if (!dateTimeModule.checkValidTimeFormat(wakeUpTime)) {
+        res
+          .status(statusCode.BAD_REQUEST)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.INVALID_TIME_FORMAT));
+      }
+
+      const user = await userService.updateOnboard(id, nickName, wakeUpTime);
+
+      if (!user) {
+        res
+          .status(statusCode.INTERNAL_SERVER_ERROR)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.UPDATE_ONBOARD_FAIL));
+      }
+
+      return res
+        .status(statusCode.OK)
+        .send(
+          util.success(statusCode.NO_CONTENT, responseMessage.UPDATE_ONBOARD_SUCCESS),
+        );
+    } catch (error) {
+      console.log(error);
+      res
+        .status(statusCode.INTERNAL_SERVER_ERROR)
+        .send(
+          util.fail(
+            statusCode.INTERNAL_SERVER_ERROR,
+            responseMessage.UPDATE_FAIL,
+          ),
+        );
     }
   },
 };
