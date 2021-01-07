@@ -41,8 +41,6 @@ module.exports = {
   AUTH_SUCCESS: '인증에 성공했습니다.',
   ISSUE_SUCCESS: '새로운 토큰이 생성되었습니다.',
 
-  
-  
   /* 서버에러 */
   INTERNAL_SERVER_ERROR: '서버 내부 오류',
 };

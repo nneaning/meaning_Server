@@ -116,7 +116,8 @@ module.exports = {
 
       let successDays = 0;
 
-      getMySuccessDay.forEach(day => (successDays += day.status));
+      getMySuccessDay.forEach((day) =>
+        (successDays += day.status));
 
       return res
         .status(statusCode.OK)

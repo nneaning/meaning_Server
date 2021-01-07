@@ -5,7 +5,7 @@ const crypto = require('crypto');
 const { User, TimeStamp } = require('../models');
 
 module.exports = {
-  checkEmail: async email => {
+  checkEmail: async (email) => {
     try {
       const alreadyEmail = await User.findOne({
         where: {
@@ -88,7 +88,7 @@ module.exports = {
       throw err;
     }
   },
-  getMySuccessDay: async id => {
+  getMySuccessDay: async (id) => {
     try {
       const getMySuccessDay = await TimeStamp.findAll({
         where: {
