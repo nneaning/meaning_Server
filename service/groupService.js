@@ -1,8 +1,10 @@
 /* eslint-disable no-dupe-keys */
 /* eslint-disable no-useless-catch */
 const {
-  Group, Member, GroupImage, GroupProfile,
+  Group, Member, GroupImage, GroupProfile, User, TimeStamp,
 } = require('../models');
+
+const postQueryUnit = 10;
 
 module.exports = {
   createGroup: async (groupName, maximumMemberNumber, introduction) => {
@@ -73,6 +75,31 @@ module.exports = {
       return countGroupImageId;
     } catch (err) {
       throw err;
+    }
+  },
+  readAllPost: async (groupId, offset) => {
+    try {
+      const posts = await TimeStamp.findAll({
+        offset,
+        limit: postQueryUnit,
+        order: [['createdAt', 'DESC']],
+        include: [
+          {
+            model: Group,
+            where: {
+              id: groupId,
+            },
+            attributes: [],
+          }, {
+            model: User,
+            attributes: ['id', 'userName', 'nickName'],
+          },
+        ],
+        attributes: { exclude: ['dateTime', 'updatedAt', 'UserId'] },
+      });
+      return posts;
+    } catch (error) {
+      throw error;
     }
   },
 };
