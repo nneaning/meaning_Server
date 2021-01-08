@@ -1,5 +1,8 @@
+/* eslint-disable no-dupe-keys */
 /* eslint-disable no-useless-catch */
-const { Group, Member, GroupImage } = require('../models');
+const {
+  Group, Member, GroupImage, GroupProfile,
+} = require('../models');
 
 module.exports = {
   createGroup: async (groupName, maximumMemberNumber, introduction) => {
@@ -45,6 +48,29 @@ module.exports = {
         groupImageUrl,
       });
       return uploadGroupImage;
+    } catch (err) {
+      throw err;
+    }
+  },
+  createGroupProfile: async (groupId, countGroupImageId) => {
+    try {
+      const makeGroupProfile = await GroupProfile.create({
+        GroupId: groupId,
+        GroupImageId: countGroupImageId,
+      });
+      return makeGroupProfile;
+    } catch (err) {
+      throw err;
+    }
+  },
+  countGroupImageId: async () => {
+    try {
+      const countGroupImageId = await GroupImage.findAll({
+        attributes: [
+          'id',
+        ],
+      });
+      return countGroupImageId;
     } catch (err) {
       throw err;
     }

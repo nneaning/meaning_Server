@@ -39,6 +39,11 @@ module.exports = {
       const groupId = createGroup.id;
 
       const createHostMember = await groupService.createMember(id, groupId, true);
+      const countGroupImageId = await groupService.countGroupImageId();
+
+      const groupImageId = Number(groupId % countGroupImageId.length);
+
+      const createGroupProfile = await groupService.createGroupProfile(groupId, groupImageId);
 
       return res
         .status(statusCode.CREATED)
