@@ -92,7 +92,7 @@ module.exports = {
             attributes: [],
           }, {
             model: User,
-            attributes: ['id', 'userName', 'nickName'],
+            attributes: ['id', 'userName', 'nickName', 'wakeUpTime'],
           },
         ],
         attributes: { exclude: ['dateTime', 'updatedAt', 'UserId'] },
