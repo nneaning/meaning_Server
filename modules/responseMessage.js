@@ -30,6 +30,9 @@ module.exports = {
   READ_TIMESTAMP_ALL_FAIL: '전체 타임스탬프 조회 실패',
   INVALID_DATETIME_FORMAT: '유효하지 않은 날짜, 시간 정보 포맷입니다',
 
+  /* 포스트 */
+  CREATE_POST_SUCCESS: '그룹에 타임스탬프가 포스팅되었습니다.',
+
   /* 그룹 */
   CREATE_GROUP_SUCCESS: '그룹 생성 완료',
   CREATE_GROUP_FAIL: '그룹 생성 실패',
