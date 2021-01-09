@@ -4,7 +4,7 @@ const {
   Group, Member, GroupImage, GroupProfile, User, TimeStamp,
 } = require('../models');
 
-const postQueryUnit = 10;
+const POST_QUERY_UNIT = 10;
 
 module.exports = {
   createGroup: async (groupName, maximumMemberNumber, introduction) => {
@@ -81,7 +81,7 @@ module.exports = {
     try {
       const posts = await TimeStamp.findAll({
         offset,
-        limit: postQueryUnit,
+        limit: POST_QUERY_UNIT,
         order: [['createdAt', 'DESC']],
         include: [
           {
