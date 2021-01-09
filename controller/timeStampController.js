@@ -7,7 +7,9 @@ const { dayjs } = require('../modules/dateTimeModule');
 const dateTimeModule = require('../modules/dateTimeModule');
 
 const userService = require('../service/userService');
+const postService = require('../service/postService');
 const timeStampService = require('../service/timeStampService');
+const groupService = require('../service/groupService');
 
 module.exports = {
   createTimeStamp: async (req, res) => {
@@ -66,16 +68,26 @@ module.exports = {
         timeStampContents,
       );
 
+      const dto = {
+        timeStampId: timeStamp.id,
+        missionStatusMessage,
+      };
+
+      const { GroupId: groupId } = await groupService.checkMemberId(userId);
+      if (groupId) {
+        const post = await postService.createPost(timeStamp.id, groupId);
+        dto.postedOnGroup = true;
+      } else {
+        dto.postedOnGroup = false;
+      }
+
       return res
         .status(statusCode.OK)
         .send(
           util.success(
             statusCode.OK,
             responseMessage.CREATE_TIMESTAMP_SUCCESS,
-            {
-              timeStampId: timeStamp.id,
-              missionStatusMessage,
-            },
+            dto,
           ),
         );
     } catch (error) {
