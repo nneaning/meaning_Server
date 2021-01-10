@@ -143,11 +143,23 @@ module.exports = {
       throw err;
     }
   },
-  checkDailyMaxim: async (todaysPromiseContents) => {
+  checkDailyMaximContents: async (todaysPromiseContents) => {
     try {
       const alreadyDailyMaxim = await TodaysPromise.findOne({
         where: {
           todaysPromiseContents,
+        },
+      });
+      return alreadyDailyMaxim;
+    } catch (err) {
+      throw err;
+    }
+  },
+  checkDailyMaximDate: async (date) => {
+    try {
+      const alreadyDailyMaxim = await TodaysPromise.findOne({
+        where: {
+          date,
         },
       });
       return alreadyDailyMaxim;

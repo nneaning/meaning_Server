@@ -199,12 +199,20 @@ module.exports = {
           .send(util.fail(statusCode.BAD_REQUEST, responseMessage.INVALID_DATE_FORMAT));
       }
 
-      const checkDailyMaxim = await userService.checkDailyMaxim(todaysPromiseContents);
+      const checkDailyMaximContents = await userService.checkDailyMaximContents(todaysPromiseContents);
 
-      if (checkDailyMaxim) {
+      if (checkDailyMaximContents) {
         res
           .status(statusCode.BAD_REQUEST)
-          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_DAILYMAXIM));
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_DAILYMAXIM_CONTENTS));
+      }
+
+      const checkDailyMaximDate = await userService.checkDailyMaximDate(date);
+
+      if (checkDailyMaximDate) {
+        res
+          .status(statusCode.BAD_REQUEST)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_DAILYMAXIM_DATE));
       }
 
       const dailyMaxim = await userService.createDailyMaxim(todaysPromiseContents, date);
