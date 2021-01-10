@@ -270,4 +270,30 @@ module.exports = {
         );
     }
   },
+  getDailyMaxim: async (req, res) => {
+    try {
+      const date = dayjs().format(dateTimeModule.FORMAT_DATE);
+      console.log(date);
+      const dailyMaxim = await userService.getDailyMaximByDate(date);
+
+      return res
+        .status(statusCode.OK)
+        .send(
+          util.success(
+            statusCode.OK,
+            responseMessage.READ_DAILYMAXIM_SUCCESS,
+            { contents: dailyMaxim.todaysPromiseContents },
+          ),
+        );
+    } catch (error) {
+      res
+        .status(statusCode.INTERNAL_SERVER_ERROR)
+        .send(
+          util.fail(
+            statusCode.INTERNAL_SERVER_ERROR,
+            responseMessage.READ_DAILYMAXIM_FAIL,
+          ),
+        );
+    }
+  },
 };
