@@ -118,10 +118,10 @@ module.exports = {
         }, {
           model: User,
           attributes: [[sequelize.fn('COUNT', 'id'), 'countMember']],
+          order: [['countMember', 'DESC']],
         }],
         offset,
         limit: POST_QUERY_UNIT,
-        order: [['maximumMemberNumber', 'DESC']],
       });
       return getAllGroupList;
     } catch (err) {
