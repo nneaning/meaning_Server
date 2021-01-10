@@ -132,10 +132,11 @@ module.exports = {
       throw err;
     }
   },
-  createDailyMaxim: async (todaysPromiseContents) => {
+  createDailyMaxim: async (todaysPromiseContents, date) => {
     try {
       const dailyMaxim = await TodaysPromise.create({
         todaysPromiseContents,
+        date,
       });
       return dailyMaxim;
     } catch (err) {

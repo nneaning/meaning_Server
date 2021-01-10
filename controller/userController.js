@@ -207,7 +207,7 @@ module.exports = {
           .send(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_DAILYMAXIM));
       }
 
-      const dailyMaxim = await userService.createDailyMaxim(todaysPromiseContents);
+      const dailyMaxim = await userService.createDailyMaxim(todaysPromiseContents, date);
       return res
         .status(statusCode.CREATED)
         .send(
