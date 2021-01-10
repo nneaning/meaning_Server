@@ -2,9 +2,8 @@
 /* eslint-disable no-useless-catch */
 
 const crypto = require('crypto');
-const {
-  User, TimeStamp, Diary,
-} = require('../models');
+const { User, TimeStamp, TodaysPromise, BookComment, Diary } = require('../models');
+
 
 module.exports = {
   checkEmail: async (email) => {
@@ -130,6 +129,65 @@ module.exports = {
         },
       );
       return user;
+    } catch (err) {
+      throw err;
+    }
+  },
+  createBookComment: async (bookTitle, bookCommentContents, UserId) => {
+    try {
+      const bookReview = await BookComment.create({
+        bookTitle,
+        bookCommentContents,
+        UserId,
+      });
+      return bookReview;
+    } catch (err) {
+      throw err;
+    }
+  },
+  checkBookComment: async (bookCommentContents) => {
+    try {
+      const alreadyBookReview = await BookComment.findOne({
+        where: {
+          bookCommentContents,
+        },
+      });
+      return alreadyBookReview;
+    } catch (err) {
+      throw err;
+    }
+  },
+  createDailyMaxim: async (todaysPromiseContents, date) => {
+    try {
+      const dailyMaxim = await TodaysPromise.create({
+        todaysPromiseContents,
+        date,
+      });
+      return dailyMaxim;
+    } catch (err) {
+      throw err;
+    }
+  },
+  checkDailyMaximContents: async (todaysPromiseContents) => {
+    try {
+      const alreadyDailyMaxim = await TodaysPromise.findOne({
+        where: {
+          todaysPromiseContents,
+        },
+      });
+      return alreadyDailyMaxim;
+    } catch (err) {
+      throw err;
+    }
+  },
+  getDailyMaximByDate: async (date) => {
+    try {
+      const dailyMaxim = await TodaysPromise.findOne({
+        where: {
+          date,
+        },
+      });
+      return dailyMaxim;
     } catch (err) {
       throw err;
     }

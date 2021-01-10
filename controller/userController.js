@@ -9,6 +9,8 @@ const statusCode = require('../modules/statusCode');
 
 const dateTimeModule = require('../modules/dateTimeModule');
 
+const { dayjs } = dateTimeModule;
+
 const userService = require('../service/userService');
 
 module.exports = {
@@ -117,8 +119,7 @@ module.exports = {
 
       let successDays = 0;
 
-      getMySuccessDay.forEach((day) =>
-        (successDays += day.status));
+      getMySuccessDay.forEach(day => (successDays += day.status));
 
       return res
         .status(statusCode.OK)
@@ -155,7 +156,12 @@ module.exports = {
       if (!dateTimeModule.checkValidTimeFormat(wakeUpTime)) {
         res
           .status(statusCode.BAD_REQUEST)
-          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.INVALID_TIME_FORMAT));
+          .send(
+            util.fail(
+              statusCode.BAD_REQUEST,
+              responseMessage.INVALID_TIME_FORMAT,
+            ),
+          );
       }
 
       const user = await userService.updateOnboard(id, nickName, wakeUpTime);
@@ -163,13 +169,21 @@ module.exports = {
       if (!user) {
         res
           .status(statusCode.INTERNAL_SERVER_ERROR)
-          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.UPDATE_ONBOARD_FAIL));
+          .send(
+            util.fail(
+              statusCode.BAD_REQUEST,
+              responseMessage.UPDATE_ONBOARD_FAIL,
+            ),
+          );
       }
 
       return res
         .status(statusCode.OK)
         .send(
-          util.success(statusCode.NO_CONTENT, responseMessage.UPDATE_ONBOARD_SUCCESS),
+          util.success(
+            statusCode.NO_CONTENT,
+            responseMessage.UPDATE_ONBOARD_SUCCESS,
+          ),
         );
     } catch (error) {
       console.log(error);
@@ -180,6 +194,141 @@ module.exports = {
             statusCode.INTERNAL_SERVER_ERROR,
             responseMessage.UPDATE_FAIL,
           ),
+        );
+    }
+  },
+  createDailyMaxim: async (req, res) => {
+    try {
+      const { todaysPromiseContents, date } = req.body;
+
+      if (!todaysPromiseContents) {
+        res
+          .status(statusCode.BAD_REQUEST)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
+      }
+
+      if (!dateTimeModule.checkValidDateFormat(date)) {
+        res
+          .status(statusCode.BAD_REQUEST)
+          .send(
+            util.fail(
+              statusCode.BAD_REQUEST,
+              responseMessage.INVALID_DATE_FORMAT,
+            ),
+          );
+      }
+
+      const checkDailyMaximContents = await userService.checkDailyMaximContents(
+        todaysPromiseContents,
+      );
+
+      if (checkDailyMaximContents) {
+        res
+          .status(statusCode.BAD_REQUEST)
+          .send(
+            util.fail(
+              statusCode.BAD_REQUEST,
+              responseMessage.ALREADY_DAILYMAXIM_CONTENTS,
+            ),
+          );
+      }
+
+      const checkDailyMaximDate = await userService.getDailyMaximByDate(date);
+
+      if (checkDailyMaximDate) {
+        res
+          .status(statusCode.BAD_REQUEST)
+          .send(
+            util.fail(
+              statusCode.BAD_REQUEST,
+              responseMessage.ALREADY_DAILYMAXIM_DATE,
+            ),
+          );
+      }
+
+      const dailyMaxim = await userService.createDailyMaxim(
+        todaysPromiseContents,
+        date,
+      );
+      return res
+        .status(statusCode.CREATED)
+        .send(
+          util.success(
+            statusCode.CREATED,
+            responseMessage.CREATE_DAILYMAXIM_SUCCESS,
+          ),
+        );
+    } catch (error) {
+      console.log(error);
+      res
+        .status(statusCode.INTERNAL_SERVER_ERROR)
+        .send(
+          util.fail(
+            statusCode.INTERNAL_SERVER_ERROR,
+            responseMessage.CREATE_DAILYMAXIM_FAIL,
+          ),
+        );
+    }
+  },
+  getDailyMaxim: async (req, res) => {
+    try {
+      const date = dayjs().format(dateTimeModule.FORMAT_DATE);
+      console.log(date);
+      const dailyMaxim = await userService.getDailyMaximByDate(date);
+
+      return res
+        .status(statusCode.OK)
+        .send(
+          util.success(
+            statusCode.OK,
+            responseMessage.READ_DAILYMAXIM_SUCCESS,
+            { contents: dailyMaxim.todaysPromiseContents },
+          ),
+        );
+    } catch (error) {
+      res
+        .status(statusCode.INTERNAL_SERVER_ERROR)
+        .send(
+          util.fail(
+            statusCode.INTERNAL_SERVER_ERROR,
+            responseMessage.READ_DAILYMAXIM_FAIL,
+          ),
+        );
+    }
+  },
+  createBookComment: async (req, res) => {
+    try {
+      const { id } = req.decoded;
+      const { bookTitle, bookCommentContents } = req.body;
+
+      if (!bookTitle || !bookCommentContents) {
+        return res
+          .status(statusCode.BAD_REQUEST)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
+      }
+      const checkBookComment = await userService.checkBookComment(bookCommentContents);
+
+      if (checkBookComment) {
+        return res
+          .status(statusCode.BAD_REQUEST)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_BOOKCOMMENT));
+      }
+
+      const bookReview = await userService.createBookComment(bookTitle, bookCommentContents, id);
+      return res
+        .status(statusCode.CREATED)
+        .send(
+          util.success(statusCode.CREATED, responseMessage.CREATE_BOOKCOMMENT_SUCCESS),
+      );
+    } catch (error) {
+      console.log(error);
+      res
+        .status(statusCode.INTERNAL_SERVER_ERROR)
+        .send(
+          util.fail(
+            statusCode.INTERNAL_SERVER_ERROR,
+            responseMessage.CREATE_BOOKCOMMENT_FAIL,
+            ),
         );
     }
   },
@@ -218,5 +367,5 @@ module.exports = {
           ),
         );
     }
-  },
+  },  
 };
