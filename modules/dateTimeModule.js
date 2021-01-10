@@ -19,5 +19,7 @@ module.exports = {
   checkValidTimeFormat: (timeString) =>
     timeFormatRegularExpression.test(timeString),
   getTimeDifference: (dateTimeFrom, dateTimeTo) =>
-    dayjs.duration(dateTimeFrom.diff(dateTimeTo)).asMinutes(),
+    dayjs.duration(dayjs(dateTimeFrom).diff(dayjs(dateTimeTo))).asMinutes(),
+  getDateDifference: (dateTimeFrom, dateTimeTo) =>
+    dayjs.duration(dayjs(dateTimeFrom).diff(dayjs(dateTimeTo))).asDays(),
 };
