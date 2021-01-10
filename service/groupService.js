@@ -1,7 +1,7 @@
 /* eslint-disable no-dupe-keys */
 /* eslint-disable no-useless-catch */
 const {
-  Group, Member, GroupImage, GroupProfile,
+  Group, Member, GroupImage, GroupProfile, User,
 } = require('../models');
 
 module.exports = {
@@ -13,6 +13,17 @@ module.exports = {
         introduction,
       });
       return makeGroup;
+    } catch (err) {
+      throw err;
+    }
+  },
+  readGroup: async (id) => {
+    try {
+      return await Group.findOne({
+        where: {
+          id,
+        },
+      });
     } catch (err) {
       throw err;
     }
@@ -37,6 +48,23 @@ module.exports = {
         GroupId: groupId,
       });
       return makeMember;
+    } catch (err) {
+      throw err;
+    }
+  },
+  readAllUsers: async (groupId) => {
+    try {
+      const members = await User.findAll({
+        attributes: ['id', 'userName', 'nickName', 'wakeUpTime'],
+        include: [{
+          model: Group,
+          where: {
+            id: groupId,
+          },
+          attributes: [],
+        }],
+      });
+      return members;
     } catch (err) {
       throw err;
     }
