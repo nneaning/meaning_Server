@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-return-assign */
 /* eslint-disable max-len */
@@ -5,6 +6,9 @@
 const util = require('../modules/util');
 const responseMessage = require('../modules/responseMessage');
 const statusCode = require('../modules/statusCode');
+
+const { dayjs } = require('../modules/dateTimeModule');
+const dateTimeModule = require('../modules/dateTimeModule');
 
 const groupService = require('../service/groupService');
 
@@ -139,6 +143,50 @@ module.exports = {
           util.fail(
             statusCode.INTERNAL_SERVER_ERROR,
             responseMessage.CREATE_GROUPIMAGE_FAIL,
+          ),
+        );
+    }
+  },
+  getEditInformation: async (req, res) => {
+    try {
+      const { groupId } = req.params;
+
+      const { groupName, introduction, maximumMemberNumber } = await groupService.readGroup(groupId);
+
+      if (!groupName || !introduction || !maximumMemberNumber) {
+        return res
+          .status(statusCode.BAD_REQUEST)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_GROUP));
+      }
+
+      const group = { groupId, groupName, introduction, maximumMemberNumber };
+
+      const users = await groupService.readAllUsers(groupId);
+      for (const { dataValues } of users) {
+        const { createdAt } = await groupService.checkMemberId(dataValues.id);
+        dataValues.dayPassed = Math.floor(
+          dateTimeModule.getDateDifference(dayjs().format(dateTimeModule.FORMAT_DATETIME), createdAt) + 1,
+        );
+      }
+
+      group.currentMemberNumber = users.length;
+
+      const dto = {
+        group,
+        users,
+      };
+
+      return res
+        .status(statusCode.OK)
+        .send(util.success(statusCode.OK, responseMessage.GET_GROUP_SETTING_SUCCESS, dto));
+    } catch (error) {
+      console.log(error);
+      return res
+        .status(statusCode.INTERNAL_SERVER_ERROR)
+        .send(
+          util.fail(
+            statusCode.INTERNAL_SERVER_ERROR,
+            responseMessage.GET_GROUP_SETTING_FAIL,
           ),
         );
     }
