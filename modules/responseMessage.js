@@ -14,7 +14,6 @@ module.exports = {
   /* 온보드 정보 등록 */
   UPDATE_ONBOARD_SUCCESS: '온보드 정보 등록 성공',
   UPDATE_ONBOARD_FAIL: '온보드 정보 등록 실패',
-  INVALID_TIME_FORMAT: '유효하지 않은 시간 정보 포맷입니다.',
 
   /* 회원관리 */
   ALREADY_ID: '존재하는 ID 입니다.',
@@ -28,13 +27,24 @@ module.exports = {
   CREATE_TIMESTAMP_FAIL: '타임스탬프 생성 실패',
   READ_TIMESTAMP_ALL_SUCCESS: '전체 타임스탬프 조회 성공',
   READ_TIMESTAMP_ALL_FAIL: '전체 타임스탬프 조회 실패',
-  INVALID_DATETIME_FORMAT: '유효하지 않은 날짜, 시간 정보 포맷입니다',
 
+  /* 시간, 날짜 포맷 */
+  INVALID_DATETIME_FORMAT: '유효하지 않은 날짜, 시간 정보 포맷입니다',
+  INVALID_TIME_FORMAT: '유효하지 않은 시간 정보 포맷입니다.',
+  INVALID_DATE_FORMAT: '유효하지 않은 날짜 정보 포맷입니다.',
+
+  /* 오늘 하루 다짐 */
+  CREATE_DAILYMAXIM_SUCCESS: '오늘 하루 다짐 생성 완료',
+  CREATE_DAILYMAXIM_FAIL: '오늘 하루 다짐 생성 실패',
+  READ_DAILYMAXIM_SUCCESS: '오늘 하루 다짐 조회 완료',
+  READ_DAILYMAXIM_FAIL: '오늘 하루 다짐 조회 실패',
+  ALREADY_DAILYMAXIM_CONTENTS: '이미 존재하는 오늘 하루 다짐 문구 입니다.',
+  ALREADY_DAILYMAXIM_DATE: '해당 날짜에 보여줄 오늘 하루 다짐은 이미 존재합니다.',
 
   /* 게시글 */
   READ_POST_ALL_SUCCESS: '전체 게시글 조회 성공',
   READ_POST_ALL_FAIL: '전체 게시글 조회 실패',
-  
+
   /* 포스트 */
   CREATE_POST_SUCCESS: '그룹에 타임스탬프가 포스팅되었습니다.',
 

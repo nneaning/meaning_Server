@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 const { Post } = require('../models');
 
 module.exports = {
