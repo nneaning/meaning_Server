@@ -1,3 +1,4 @@
+/* eslint-disable arrow-parens */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-return-assign */
 /* eslint-disable max-len */
@@ -119,7 +120,7 @@ module.exports = {
 
       let successDays = 0;
 
-      getMySuccessDay.forEach((day) =>
+      getMySuccessDay.forEach(day =>
         (successDays += day.status));
 
       return res

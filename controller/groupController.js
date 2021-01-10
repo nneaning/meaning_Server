@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-return-assign */
@@ -69,6 +70,39 @@ module.exports = {
         );
     }
   },
+  readGroupDetail: async (req, res) => {
+    try {
+      const { groupId } = req.params;
+
+      const checkGroupId = await groupService.readGroup(groupId);
+
+      if (!checkGroupId) {
+        console.log(responseMessage.NO_GROUP);
+        return res
+          .status(statusCode.BAD_REQUEST)
+          .send(
+            util.fail(statusCode.BAD_REQUEST, responseMessage.NO_GROUP),
+          );
+      }
+
+      const groupDetail = {
+        groupId,
+        groupName: checkGroupId.groupName,
+        introduction: checkGroupId.introduction,
+        maximumMemberNumber: checkGroupId.maximumMemberNumber,
+        countMember: await groupService.countMember(groupId),
+      };
+      return res
+        .status(statusCode.OK)
+        .send(
+          util.success(statusCode.OK, responseMessage.GET_GROUP_DETAIL_SUCCESS, { groupDetail }),
+        );
+    } catch (error) {
+      console.log(error);
+      return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.GET_GROUP_DETAIL_FAIL));
+    }
+  },
+
   joinGroup: async (req, res) => {
     try {
       const { id } = req.decoded;
@@ -147,7 +181,7 @@ module.exports = {
         );
     }
   },
- readAllPost: async (req, res) => {
+  readAllPost: async (req, res) => {
     try {
       const { groupId } = req.params;
       const { offset } = req.query;
@@ -193,7 +227,9 @@ module.exports = {
           .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_GROUP));
       }
 
-      const group = { groupId, groupName, introduction, maximumMemberNumber };
+      const group = {
+        groupId, groupName, introduction, maximumMemberNumber,
+      };
 
       const users = await groupService.readAllUsers(groupId);
       for (const { dataValues } of users) {
