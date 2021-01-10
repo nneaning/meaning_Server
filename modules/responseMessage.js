@@ -60,6 +60,10 @@ module.exports = {
   JOIN_GROUP_SUCCESS: '그룹 참가 완료',
   JOIN_GROUP_FAIL: '그룹 참가 실패',
 
+  /* 그룹 상세정보 */
+  GET_GROUP_DETAIL_SUCCESS: '그룹 상세보기 정보 불러오기 성공',
+  GET_GROUP_DETAIL_FAIL: '그룹 상세보기 정보 불러오기 실패',
+
   /* 설정 정보 */
   GET_GROUP_SETTING_SUCCESS: '그룹 설정 정보 불러오기 성공',
   GET_GROUP_SETTING_FAIL: '그룹 설정 정보 불러오기 실패',
