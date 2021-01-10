@@ -72,8 +72,9 @@ module.exports = {
         missionStatusMessage,
       };
 
-      const { GroupId: groupId } = await groupService.checkMemberId(userId);
-      if (groupId) {
+      const checkHasGroup = await groupService.checkMemberId(userId);
+      if (checkHasGroup) {
+        const { GroupId: groupId } = checkHasGroup;
         const post = await postService.createPost(timeStamp.id, groupId);
         dto.postedOnGroup = true;
       } else {
