@@ -6,10 +6,14 @@ module.exports = (sequelize, DataTypes) =>
         type: DataTypes.STRING(200),
         allowNull: false,
       },
+      date: {
+        type: DataTypes.DATE,
+        allowNull: false,
+      },
     },
     {
       underscored: false,
       freezeTableName: true,
-      timestamps: true,
+      timestamps: false,
     },
   );

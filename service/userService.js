@@ -2,7 +2,8 @@
 /* eslint-disable no-useless-catch */
 
 const crypto = require('crypto');
-const { User, TimeStamp, BookComment } = require('../models');
+
+const { User, TimeStamp, TodaysPromise, BookComment } = require('../models');
 
 module.exports = {
   checkEmail: async (email) => {
@@ -156,4 +157,39 @@ module.exports = {
       throw err;
     }
   },
+  createDailyMaxim: async (todaysPromiseContents, date) => {
+    try {
+      const dailyMaxim = await TodaysPromise.create({
+        todaysPromiseContents,
+        date,
+      });
+      return dailyMaxim;
+    } catch (err) {
+      throw err;
+    }
+  },
+  checkDailyMaximContents: async (todaysPromiseContents) => {
+    try {
+      const alreadyDailyMaxim = await TodaysPromise.findOne({
+        where: {
+          todaysPromiseContents,
+        },
+      });
+      return alreadyDailyMaxim;
+    } catch (err) {
+      throw err;
+    }
+  },
+  getDailyMaximByDate: async (date) => {
+    try {
+      const dailyMaxim = await TodaysPromise.findOne({
+        where: {
+          date,
+        },
+      });
+      return dailyMaxim;
+    } catch (err) {
+      throw err;
+    }
+  }
 };
