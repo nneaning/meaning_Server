@@ -155,14 +155,14 @@ module.exports = {
       throw err;
     }
   },
-  checkDailyMaximDate: async (date) => {
+  getDailyMaximByDate: async (date) => {
     try {
-      const alreadyDailyMaxim = await TodaysPromise.findOne({
+      const dailyMaxim = await TodaysPromise.findOne({
         where: {
           date,
         },
       });
-      return alreadyDailyMaxim;
+      return dailyMaxim;
     } catch (err) {
       throw err;
     }
