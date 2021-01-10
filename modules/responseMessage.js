@@ -59,6 +59,7 @@ module.exports = {
   ALREADY_GROUP: '이미 그룹에 속해 있습니다.',
   JOIN_GROUP_SUCCESS: '그룹 참가 완료',
   JOIN_GROUP_FAIL: '그룹 참가 실패',
+  MEMBER_NUMBER_LIMITATION: '그룹의 인원이 가득찼습니다.',
 
   /* 그룹 상세정보 */
   GET_GROUP_DETAIL_SUCCESS: '그룹 상세보기 정보 불러오기 성공',
