@@ -2,7 +2,7 @@
 /* eslint-disable no-useless-catch */
 
 const crypto = require('crypto');
-const { User, TimeStamp } = require('../models');
+const { User, TimeStamp, BookComment } = require('../models');
 
 module.exports = {
   checkEmail: async (email) => {
@@ -128,6 +128,30 @@ module.exports = {
         },
       );
       return user;
+    } catch (err) {
+      throw err;
+    }
+  },
+  createBookComment: async (bookTitle, bookCommentContents, UserId) => {
+    try {
+      const bookReview = await BookComment.create({
+        bookTitle,
+        bookCommentContents,
+        UserId,
+      });
+      return bookReview;
+    } catch (err) {
+      throw err;
+    }
+  },
+  checkBookComment: async (bookCommentContents) => {
+    try {
+      const alreadyBookReview = await BookComment.findOne({
+        where: {
+          bookCommentContents,
+        },
+      });
+      return alreadyBookReview;
     } catch (err) {
       throw err;
     }

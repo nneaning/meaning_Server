@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-return-assign */
 /* eslint-disable max-len */
 const jwt = require('../modules/jwt');
@@ -178,6 +179,42 @@ module.exports = {
           util.fail(
             statusCode.INTERNAL_SERVER_ERROR,
             responseMessage.UPDATE_FAIL,
+          ),
+        );
+    }
+  },
+  createBookComment: async (req, res) => {
+    try {
+      const { id } = req.decoded;
+      const { bookTitle, bookCommentContents } = req.body;
+
+      if (!bookTitle || !bookCommentContents) {
+        return res
+          .status(statusCode.BAD_REQUEST)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
+      }
+      const checkBookComment = await userService.checkBookComment(bookCommentContents);
+
+      if (checkBookComment) {
+        return res
+          .status(statusCode.BAD_REQUEST)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_BOOKCOMMENT));
+      }
+
+      const bookReview = await userService.createBookComment(bookTitle, bookCommentContents, id);
+      return res
+        .status(statusCode.CREATED)
+        .send(
+          util.success(statusCode.CREATED, responseMessage.CREATE_BOOKCOMMENT_SUCCESS),
+        );
+    } catch (error) {
+      console.log(error);
+      res
+        .status(statusCode.INTERNAL_SERVER_ERROR)
+        .send(
+          util.fail(
+            statusCode.INTERNAL_SERVER_ERROR,
+            responseMessage.CREATE_BOOKCOMMENT_FAIL,
           ),
         );
     }

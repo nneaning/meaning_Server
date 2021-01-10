@@ -12,5 +12,6 @@ router.put('/refreshtoken', isLoggedIn.reIssue);
 router.put('/onboard', isLoggedIn.checkToken, userController.updateOnboard);
 
 router.get('/mypage', isLoggedIn.checkToken, userController.getMyPage);
+router.post('/bookreview', isLoggedIn.checkToken, userController.createBookComment);
 
 module.exports = router;
