@@ -11,6 +11,8 @@ router.put('/refreshtoken', isLoggedIn.reIssue);
 
 router.put('/onboard', isLoggedIn.checkToken, userController.updateOnboard);
 
+router.post('/daypromise', userController.createDailyMaxim);
+
 router.get('/mypage', isLoggedIn.checkToken, userController.getMyPage);
 
 module.exports = router;
