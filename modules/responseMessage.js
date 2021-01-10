@@ -33,7 +33,6 @@ module.exports = {
   INVALID_TIME_FORMAT: '유효하지 않은 시간 정보 포맷입니다.',
   INVALID_DATE_FORMAT: '유효하지 않은 날짜 정보 포맷입니다.',
 
-
   /* 독서록 */
   CREATE_BOOKCOMMENT_SUCCESS: '독후감 생성 완료',
   CREATE_BOOKCOMMENT_FAIL: '독후감 생성 실패',

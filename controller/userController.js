@@ -319,7 +319,7 @@ module.exports = {
         .status(statusCode.CREATED)
         .send(
           util.success(statusCode.CREATED, responseMessage.CREATE_BOOKCOMMENT_SUCCESS),
-        );
+      );
     } catch (error) {
       console.log(error);
       res
@@ -328,8 +328,44 @@ module.exports = {
           util.fail(
             statusCode.INTERNAL_SERVER_ERROR,
             responseMessage.CREATE_BOOKCOMMENT_FAIL,
-          ),
+            ),
         );
     }
   },
+  createDailyDiary: async (req, res) => {
+    try {
+      const { id } = req.decoded;
+      const { diaryContents } = req.body;
+
+      if (!diaryContents) {
+        return res
+          .status(statusCode.BAD_REQUEST)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
+      }
+      const checkDailyDiary = await userService.checkDailyDiary(diaryContents);
+
+      if (checkDailyDiary) {
+        return res
+          .status(statusCode.BAD_REQUEST)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_DAILYMAXIM));
+      }
+
+      const dailyDiary = await userService.createDailyDiary(diaryContents, id);
+      return res
+        .status(statusCode.CREATED)
+        .send(
+          util.success(statusCode.CREATED, responseMessage.CREATE_DAILYMAXIM_SUCCESS),
+        );
+    } catch (error) {
+      console.log(error);
+      res
+        .status(statusCode.INTERNAL_SERVER_ERROR)
+        .send(
+          util.fail(
+            statusCode.INTERNAL_SERVER_ERROR,
+            responseMessage.CREATE_DAILYMAXIM_FAIL,
+          ),
+        );
+    }
+  },  
 };
