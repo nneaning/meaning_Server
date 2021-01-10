@@ -147,6 +147,40 @@ module.exports = {
         );
     }
   },
+ readAllPost: async (req, res) => {
+    try {
+      const { groupId } = req.params;
+      const { offset } = req.query;
+
+      if (!groupId) {
+        return res
+          .status(statusCode.BAD_REQUEST)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
+      }
+
+      const posts = await groupService.readAllPost(Number(groupId), Number(offset));
+
+      return res
+        .status(statusCode.OK)
+        .send(
+          util.success(
+            statusCode.OK,
+            responseMessage.READ_POST_ALL_SUCCESS,
+            posts,
+          ),
+        );
+    } catch (error) {
+      console.log(error);
+      return res
+        .status(statusCode.INTERNAL_SERVER_ERROR)
+        .send(
+          util.fail(
+            statusCode.INTERNAL_SERVER_ERROR,
+            responseMessage.READ_POST_ALL_FAIL,
+          ),
+        );
+    }
+  },
   getEditInformation: async (req, res) => {
     try {
       const { groupId } = req.params;
