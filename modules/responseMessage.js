@@ -33,13 +33,18 @@ module.exports = {
   INVALID_TIME_FORMAT: '유효하지 않은 시간 정보 포맷입니다.',
   INVALID_DATE_FORMAT: '유효하지 않은 날짜 정보 포맷입니다.',
 
+
+  /* 독서록 */
+  CREATE_BOOKCOMMENT_SUCCESS: '독후감 생성 완료',
+  CREATE_BOOKCOMMENT_FAIL: '독후감 생성 실패',
+  ALREADY_BOOKCOMMENT: '이미 독후감이 작성됐습니다.',
+
   /* 오늘 하루 다짐 */
   CREATE_DAILYMAXIM_SUCCESS: '오늘 하루 다짐 생성 완료',
   CREATE_DAILYMAXIM_FAIL: '오늘 하루 다짐 생성 실패',
   READ_DAILYMAXIM_SUCCESS: '오늘 하루 다짐 조회 완료',
   READ_DAILYMAXIM_FAIL: '오늘 하루 다짐 조회 실패',
   ALREADY_DAILYMAXIM_CONTENTS: '이미 존재하는 오늘 하루 다짐 문구 입니다.',
-  ALREADY_DAILYMAXIM_DATE: '해당 날짜에 보여줄 오늘 하루 다짐은 이미 존재합니다.',
 
   /* 게시글 */
   READ_POST_ALL_SUCCESS: '전체 게시글 조회 성공',

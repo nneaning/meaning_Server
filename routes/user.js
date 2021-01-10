@@ -15,5 +15,6 @@ router.get('/daypromise', isLoggedIn.checkToken, userController.getDailyMaxim);
 router.post('/daypromise', userController.createDailyMaxim);
 
 router.get('/mypage', isLoggedIn.checkToken, userController.getMyPage);
+router.post('/bookreview', isLoggedIn.checkToken, userController.createBookComment);
 
 module.exports = router;
