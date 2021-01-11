@@ -143,7 +143,8 @@ module.exports = {
     } catch (error) {
       console.log(error);
       return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.READ_GROUP_ALL_FAIL));
-    },
+    }
+  },
   readGroupDetail: async (req, res) => {
     try {
       const { groupId } = req.params;
