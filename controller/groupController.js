@@ -86,30 +86,12 @@ module.exports = {
 
     if (!offset) {
       console.log('필요한 쿼리값이 없습니다.');
-      res
+      return res
         .status(statusCode.BAD_REQUEST)
         .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
     }
 
     try {
-      const checkMemberId = await groupService.checkMemberId(id);
-
-      if (!checkMemberId) {
-        console.log(responseMessage.NO_GROUP);
-        return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.NO_GROUP, { myGroup: null }));
-      }
-
-      const groupId = checkMemberId.GroupId;
-      const readGroup = await groupService.readGroup(groupId);
-      const countMember = await groupService.countMember(groupId);
-
-      const myGroup = {
-        groupId,
-        groupName: readGroup.groupName,
-        maximumMemberNumber: readGroup.maximumMemberNumber,
-        countMember,
-      };
-
       const getGroupAll = await groupService.findAllGroupList(Number(offset));
 
       const getImageGroupList = [];
@@ -130,6 +112,24 @@ module.exports = {
         });
       }
 
+      const checkMemberId = await groupService.checkMemberId(id);
+
+      if (!checkMemberId) {
+        console.log(responseMessage.NO_GROUP);
+        return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.NO_GROUP, { myGroup: null, hasImageGroupList: getImageGroupList, noImageGroupList: getNoImageGroupList }));
+      }
+
+      const groupId = checkMemberId.GroupId;
+      const readGroup = await groupService.readGroup(groupId);
+      const countMember = await groupService.countMember(groupId);
+
+      const myGroup = {
+        groupId,
+        groupName: readGroup.groupName,
+        maximumMemberNumber: readGroup.maximumMemberNumber,
+        countMember,
+      };
+
       const hasImageGroupList = _.uniqBy(getImageGroupList, 'groupId')
         .filter((hasImageGroup) =>
           hasImageGroup.groupId !== myGroup.groupId);
@@ -139,7 +139,6 @@ module.exports = {
           NoImageGroup.groupId !== myGroup.groupId);
 
       return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_GROUP_ALL_SUCCESS, { myGroup, hasImageGroupList, noImageGroupList }));
-      // return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_GROUP_ALL_SUCCESS, { getGroupAll }));
     } catch (error) {
       console.log(error);
       return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.READ_GROUP_ALL_FAIL));
