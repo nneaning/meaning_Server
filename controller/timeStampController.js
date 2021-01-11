@@ -52,14 +52,6 @@ module.exports = {
         timeStampMissionStatus = missionStatus.LATE; // late
       }
 
-      let missionStatusMessage;
-      if (timeStampMissionStatus === missionStatus.SUCCESS) {
-        missionStatusMessage = 'success';
-      }
-      if (timeStampMissionStatus === missionStatus.LATE) {
-        missionStatusMessage = 'late';
-      }
-
       const timeStamp = await timeStampService.createTimeStamp(
         userId,
         timeStampMissionStatus,
@@ -70,7 +62,7 @@ module.exports = {
 
       const dto = {
         timeStampId: timeStamp.id,
-        missionStatusMessage,
+        misstionStatus: timeStampMissionStatus,
       };
 
       const checkHasGroup = await groupService.checkMemberId(userId);
