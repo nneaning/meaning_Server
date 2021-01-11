@@ -2,8 +2,9 @@
 /* eslint-disable no-useless-catch */
 
 const crypto = require('crypto');
-const { User, TimeStamp, TodaysPromise, BookComment, Diary } = require('../models');
-
+const {
+  User, TimeStamp, TodaysPromise, BookComment, Diary,
+} = require('../models');
 
 module.exports = {
   checkEmail: async (email) => {

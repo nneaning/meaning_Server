@@ -119,7 +119,8 @@ module.exports = {
 
       let successDays = 0;
 
-      getMySuccessDay.forEach(day => (successDays += day.status));
+      getMySuccessDay.forEach((day) =>
+        (successDays += day.status));
 
       return res
         .status(statusCode.OK)
@@ -319,7 +320,7 @@ module.exports = {
         .status(statusCode.CREATED)
         .send(
           util.success(statusCode.CREATED, responseMessage.CREATE_BOOKCOMMENT_SUCCESS),
-      );
+        );
     } catch (error) {
       console.log(error);
       res
@@ -328,7 +329,7 @@ module.exports = {
           util.fail(
             statusCode.INTERNAL_SERVER_ERROR,
             responseMessage.CREATE_BOOKCOMMENT_FAIL,
-            ),
+          ),
         );
     }
   },
@@ -367,5 +368,5 @@ module.exports = {
           ),
         );
     }
-  },  
+  },
 };

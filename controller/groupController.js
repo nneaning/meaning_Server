@@ -105,39 +105,34 @@ module.exports = {
 
       const getGroupAll = await groupService.findAllGroupList(Number(offset));
 
-      const getGroupAllList = [];
-
-      for (const i of getGroupAll) {
-        getGroupAllList.push({
-          groupId: i['GroupImages'][0]['GroupProfile']['GroupId'],
-          groupName: i.groupName,
-          imageUrl: i['GroupImages'][0]['groupImageUrl'],
-          countMember: i['Users'][0].dataValues.countMember,
-        });
-      }
-
-      const hasImageGroupList = _.uniqBy(getGroupAllList, 'groupId')
-        .filter((hasImageGroup) =>
-          hasImageGroup.groupId !== myGroup.groupId);
-
+      const getImageGroupList = [];
       const getNoImageGroupList = [];
 
       for (const i of getGroupAll) {
+        getImageGroupList.push({
+          groupId: i.GroupId,
+          groupName: i.groupName,
+          imageUrl: i.groupImageUrl,
+          countMember: i.memberCount,
+        });
         getNoImageGroupList.push({
-          groupId: i['GroupImages'][0]['GroupProfile']['GroupId'],
+          groupId: i.GroupId,
           groupName: i.groupName,
           maximumMemberNumber: i.maximumMemberNumber,
-          countMember: i['Users'][0].dataValues.countMember,
-
+          countMember: i.memberCount,
         });
       }
-      console.log(getNoImageGroupList);
+
+      const hasImageGroupList = _.uniqBy(getImageGroupList, 'groupId')
+        .filter((hasImageGroup) =>
+          hasImageGroup.groupId !== myGroup.groupId);
+
       const noImageGroupList = _.uniqBy(getNoImageGroupList, 'groupId')
         .filter((NoImageGroup) =>
           NoImageGroup.groupId !== myGroup.groupId);
 
-      // return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_GROUP_ALL_SUCCESS, { myGroup, hasImageGroupList, noImageGroupList }));
-      return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_GROUP_ALL_SUCCESS, { getGroupAll }));
+      return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_GROUP_ALL_SUCCESS, { myGroup, hasImageGroupList, noImageGroupList }));
+      // return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_GROUP_ALL_SUCCESS, { getGroupAll }));
     } catch (error) {
       console.log(error);
       return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.READ_GROUP_ALL_FAIL));
@@ -221,7 +216,7 @@ module.exports = {
         );
     }
   },
- readAllPost: async (req, res) => {
+  readAllPost: async (req, res) => {
     try {
       const { groupId } = req.params;
       const { offset } = req.query;
@@ -267,7 +262,9 @@ module.exports = {
           .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_GROUP));
       }
 
-      const group = { groupId, groupName, introduction, maximumMemberNumber };
+      const group = {
+        groupId, groupName, introduction, maximumMemberNumber,
+      };
 
       const users = await groupService.readAllUsers(groupId);
       for (const { dataValues } of users) {

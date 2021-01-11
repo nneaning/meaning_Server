@@ -1,5 +1,8 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-dupe-keys */
 /* eslint-disable no-useless-catch */
+const db = require('../models');
+
 const {
   User, Group, Member, GroupImage, GroupProfile, sequelize, TimeStamp,
 } = require('../models');
@@ -135,28 +138,16 @@ module.exports = {
   },
   findAllGroupList: async (offset) => {
     try {
-      const getAllGroupList = await Group.findAll({
-        attributes: [
-          'groupName',
-          'maximumMemberNumber',
-          [sequelize.fn('COUNT', sequelize.col('id')), 'countMember'],
+      const query = `SELECT g.groupName, g.maximumMemberNumber, m.GroupId, image.groupImageUrl, count(m.UserId) as memberCount FROM MEANING.Group g 
+                    JOIN GroupProfile p ON g.id = p.GroupId JOIN Member m ON g.id = m.GroupId JOIN GroupImage image ON p.GroupImageId = image.id
+                    GROUP BY g.id ORDER BY memberCount DESC LIMIT ${offset}, 10`;
 
-        ],
-        include: [{
-          model: GroupImage,
-          attributes: ['groupImageUrl'],
-        }, {
-          model: User,
-          attributes: ['id'],
-        }],
-        group: 'groupName',
-        offset,
-        limit: POST_QUERY_UNIT,
-        // order: [['countMember', 'DESC']],
+      const result = await db.sequelize.query(query, {
+        type: sequelize.QueryTypes.SELECT,
       });
-      return getAllGroupList;
-    } catch (err) {
-      throw err;
+      return result;
+    } catch (error) {
+      throw error;
     }
   },
   readAllPost: async (groupId, offset) => {

@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) =>
     'TimeStamp',
     {
       dateTime: {
-        type: DataTypes.DATETIME,
+        type: DataTypes.DATE,
         allowNull: false,
       },
       timeStampImageUrl: {
