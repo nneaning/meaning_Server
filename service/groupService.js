@@ -19,6 +19,17 @@ module.exports = {
       throw err;
     }
   },
+  readGroup: async (id) => {
+    try {
+      return await Group.findOne({
+        where: {
+          id,
+        },
+      });
+    } catch (err) {
+      throw err;
+    }
+  },
   checkMemberId: async (id) => {
     try {
       const findMemberId = await Member.findOne({
@@ -39,6 +50,23 @@ module.exports = {
         GroupId: groupId,
       });
       return makeMember;
+    } catch (err) {
+      throw err;
+    }
+  },
+  readAllUsers: async (groupId) => {
+    try {
+      const members = await User.findAll({
+        attributes: ['id', 'userName', 'nickName', 'wakeUpTime'],
+        include: [{
+          model: Group,
+          where: {
+            id: groupId,
+          },
+          attributes: [],
+        }],
+      });
+      return members;
     } catch (err) {
       throw err;
     }

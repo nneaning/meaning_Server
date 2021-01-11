@@ -42,9 +42,8 @@ module.exports = {
           );
       }
 
-      const targetTime = dayjs(`${dayjs().format(dateTimeModule.FORMAT_DATE)} ${wakeUpTime}`);
-      const requestedTime = dayjs(dateTime);
-      const timeDifference = dateTimeModule.getTimeDifference(requestedTime, targetTime);
+      const targetTime = `${dayjs().format(dateTimeModule.FORMAT_DATE)} ${wakeUpTime}`;
+      const timeDifference = dateTimeModule.getTimeDifference(dateTime, targetTime);
 
       let timeStampMissionStatus;
       if (timeDifference <= 0) {
