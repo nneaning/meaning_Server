@@ -61,11 +61,13 @@ module.exports = {
       );
 
       return res
-        .status(statusCode.CREATED)
+        .status(statusCode.OK)
         .send(
           util.success(
             statusCode.CREATED,
-            responseMessage.CREATE_GROUP_SUCCESS,
+            responseMessage.CREATE_GROUP_SUCCESS, {
+              groupId,
+            },
           ),
         );
     } catch (error) {
