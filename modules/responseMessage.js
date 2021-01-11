@@ -44,6 +44,7 @@ module.exports = {
   READ_DAILYMAXIM_SUCCESS: '오늘 하루 다짐 조회 완료',
   READ_DAILYMAXIM_FAIL: '오늘 하루 다짐 조회 실패',
   ALREADY_DAILYMAXIM_CONTENTS: '이미 존재하는 오늘 하루 다짐 문구 입니다.',
+  ALREADY_DAILYMAXIM_DATE: '이미 오늘 하루 다짐 문구가 등록된 날짜입니다.',
 
   /* 게시글 */
   READ_POST_ALL_SUCCESS: '전체 게시글 조회 성공',
@@ -59,9 +60,13 @@ module.exports = {
   ALREADY_GROUP: '이미 그룹에 속해 있습니다.',
   JOIN_GROUP_SUCCESS: '그룹 참가 완료',
   JOIN_GROUP_FAIL: '그룹 참가 실패',
-  NO_GROUP: '그룹에 가입되어있지 않습니다.',
   READ_GROUP_ALL_SUCCESS: '그룹에 가입된 사용자의 전체 그룹 조회 성공',
   READ_GROUP_ALL_FAIL: '그룹에 가입된 사용자의 전체 그룹 조회 실패',
+  MEMBER_NUMBER_LIMITATION: '그룹의 인원이 가득찼습니다.',
+
+  /* 그룹 상세정보 */
+  GET_GROUP_DETAIL_SUCCESS: '그룹 상세보기 정보 불러오기 성공',
+  GET_GROUP_DETAIL_FAIL: '그룹 상세보기 정보 불러오기 실패',
 
   /* 설정 정보 */
   GET_GROUP_SETTING_SUCCESS: '그룹 설정 정보 불러오기 성공',

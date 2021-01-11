@@ -6,14 +6,16 @@ dayjs.extend(require('dayjs/plugin/duration'));
 const timeFormatRegularExpression = /(2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9]/g;
 
 const FORMAT_DATE = 'YYYY-MM-DD';
+const FORMAT_TIME = 'HH:mm:ss';
+const FORMAT_DATETIME = 'YYYY-MM-DD HH:mm:ss';
 
 module.exports = {
   dayjs,
-  FORMAT_TIME: 'hh:mm:ss',
-  FORMAT_DATETIME: 'YYYY-MM-DD HH:mm:ss',
-  FORMAT_DATE: 'YYYY-MM-DD',
+  FORMAT_TIME,
+  FORMAT_DATETIME,
+  FORMAT_DATE,
   checkValidDateTimeFormat: (dateTimeString) =>
-    dayjs(dateTimeString, this.DATETIME).isValid(),
+    dayjs(dateTimeString, FORMAT_DATETIME, true).isValid(),
   checkValidDateFormat: (dateString) =>
     dayjs(dateString, FORMAT_DATE, true).isValid(),
   checkValidTimeFormat: (timeString) =>

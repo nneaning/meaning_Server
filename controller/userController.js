@@ -1,3 +1,4 @@
+/* eslint-disable arrow-parens */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-return-assign */
 /* eslint-disable max-len */
@@ -61,7 +62,7 @@ module.exports = {
 
     if (!email || !password) {
       console.log('데이터가 없습니다.');
-      res
+      return res
         .status(statusCode.BAD_REQUEST)
         .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
     }
@@ -71,7 +72,7 @@ module.exports = {
 
       if (!checkEmail) {
         console.log('DB에 존재하는 아이디가 아닙니다.');
-        res
+        return res
           .status(statusCode.BAD_REQUEST)
           .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_USER));
       }
@@ -81,7 +82,7 @@ module.exports = {
 
       if (user.password !== hashedPassword) {
         console.log('비밀번호가 일치하지 않습니다.');
-        res
+        return res
           .status(statusCode.BAD_REQUEST)
           .send(
             util.fail(statusCode.BAD_REQUEST, responseMessage.MISS_MATCH_PW),
@@ -89,7 +90,7 @@ module.exports = {
       }
 
       const { accessToken, refreshToken } = await jwt.sign(user);
-      res.status(statusCode.OK).send(
+      return res.status(statusCode.OK).send(
         util.success(statusCode.OK, responseMessage.SIGN_IN_SUCCESS, {
           accessToken,
           refreshToken,
@@ -97,7 +98,7 @@ module.exports = {
       );
     } catch (error) {
       console.log(error);
-      res
+      return res
         .status(statusCode.INTERNAL_SERVER_ERROR)
         .send(util.fail(statusCode.BAD_REQUEST, responseMessage.SIGN_IN_FAIL));
     }
@@ -108,7 +109,7 @@ module.exports = {
 
     if (!offset) {
       console.log('필요한 쿼리값이 없습니다.');
-      res
+      return res
         .status(statusCode.BAD_REQUEST)
         .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
     }
@@ -119,7 +120,7 @@ module.exports = {
 
       let successDays = 0;
 
-      getMySuccessDay.forEach((day) =>
+      getMySuccessDay.forEach(day =>
         (successDays += day.status));
 
       return res
@@ -133,7 +134,7 @@ module.exports = {
         );
     } catch (error) {
       console.log(error);
-      res
+      return res
         .status(statusCode.INTERNAL_SERVER_ERROR)
         .send(
           util.fail(
@@ -149,13 +150,13 @@ module.exports = {
       const { nickName, wakeUpTime } = req.body;
 
       if (!nickName || !wakeUpTime) {
-        res
+        return res
           .status(statusCode.BAD_REQUEST)
           .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
       }
 
       if (!dateTimeModule.checkValidTimeFormat(wakeUpTime)) {
-        res
+        return res
           .status(statusCode.BAD_REQUEST)
           .send(
             util.fail(
@@ -168,7 +169,7 @@ module.exports = {
       const user = await userService.updateOnboard(id, nickName, wakeUpTime);
 
       if (!user) {
-        res
+        return res
           .status(statusCode.INTERNAL_SERVER_ERROR)
           .send(
             util.fail(
@@ -188,7 +189,7 @@ module.exports = {
         );
     } catch (error) {
       console.log(error);
-      res
+      return res
         .status(statusCode.INTERNAL_SERVER_ERROR)
         .send(
           util.fail(
@@ -203,13 +204,13 @@ module.exports = {
       const { todaysPromiseContents, date } = req.body;
 
       if (!todaysPromiseContents) {
-        res
+        return res
           .status(statusCode.BAD_REQUEST)
           .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
       }
 
       if (!dateTimeModule.checkValidDateFormat(date)) {
-        res
+        return res
           .status(statusCode.BAD_REQUEST)
           .send(
             util.fail(
@@ -224,7 +225,7 @@ module.exports = {
       );
 
       if (checkDailyMaximContents) {
-        res
+        return res
           .status(statusCode.BAD_REQUEST)
           .send(
             util.fail(
@@ -237,7 +238,7 @@ module.exports = {
       const checkDailyMaximDate = await userService.getDailyMaximByDate(date);
 
       if (checkDailyMaximDate) {
-        res
+        return res
           .status(statusCode.BAD_REQUEST)
           .send(
             util.fail(
@@ -261,7 +262,7 @@ module.exports = {
         );
     } catch (error) {
       console.log(error);
-      res
+      return res
         .status(statusCode.INTERNAL_SERVER_ERROR)
         .send(
           util.fail(
@@ -287,7 +288,7 @@ module.exports = {
           ),
         );
     } catch (error) {
-      res
+      return res
         .status(statusCode.INTERNAL_SERVER_ERROR)
         .send(
           util.fail(
@@ -323,7 +324,7 @@ module.exports = {
         );
     } catch (error) {
       console.log(error);
-      res
+      return res
         .status(statusCode.INTERNAL_SERVER_ERROR)
         .send(
           util.fail(
@@ -359,7 +360,7 @@ module.exports = {
         );
     } catch (error) {
       console.log(error);
-      res
+      return res
         .status(statusCode.INTERNAL_SERVER_ERROR)
         .send(
           util.fail(

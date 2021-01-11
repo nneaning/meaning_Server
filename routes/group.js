@@ -7,6 +7,7 @@ const upload = require('../modules/multer');
 
 router.post('/', isLoggedIn.checkToken, groupController.createGroup);
 router.get('/', isLoggedIn.checkToken, groupController.readGroupList);
+router.get('/:groupId', isLoggedIn.checkToken, groupController.readGroupDetail);
 router.post('/upload', upload.single('image'), groupController.createGroupImage);
 router.post('/join', isLoggedIn.checkToken, groupController.joinGroup);
 router.get('/:groupId/edit', isLoggedIn.checkToken, groupController.getEditInformation);

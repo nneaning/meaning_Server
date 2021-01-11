@@ -175,4 +175,16 @@ module.exports = {
       throw error;
     }
   },
+  countMember: async (id) => {
+    try {
+      const countMember = await Member.findAll({
+        where: {
+          GroupId: id,
+        },
+      });
+      return countMember.length;
+    } catch (err) {
+      throw err;
+    }
+  },
 };
