@@ -346,19 +346,14 @@ module.exports = {
           .status(statusCode.BAD_REQUEST)
           .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
       }
-      const checkDailyDiary = await userService.checkDailyDiary(diaryContents);
-
-      if (checkDailyDiary) {
-        return res
-          .status(statusCode.BAD_REQUEST)
-          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_DAILYMAXIM));
-      }
 
       const dailyDiary = await userService.createDailyDiary(diaryContents, id);
       return res
         .status(statusCode.CREATED)
         .send(
-          util.success(statusCode.CREATED, responseMessage.CREATE_DAILYMAXIM_SUCCESS),
+          util.success(statusCode.CREATED, responseMessage.CREATE_DAILYDIARY_SUCCESS, {
+            dailyDiaryId: dailyDiary.id,
+          }),
         );
     } catch (error) {
       console.log(error);
@@ -367,7 +362,7 @@ module.exports = {
         .send(
           util.fail(
             statusCode.INTERNAL_SERVER_ERROR,
-            responseMessage.CREATE_DAILYMAXIM_FAIL,
+            responseMessage.CREATE_DAILYDIARY_FAIL,
           ),
         );
     }
