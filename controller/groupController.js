@@ -100,13 +100,13 @@ module.exports = {
       }
 
       const groupId = checkMemberId.GroupId;
-      const checkGroup = await groupService.checkGroup(groupId);
+      const readGroup = await groupService.readGroup(groupId);
       const countMember = await groupService.countMember(groupId);
 
       const myGroup = {
         groupId,
-        groupName: checkGroup.groupName,
-        maximumMemberNumber: checkGroup.maximumMemberNumber,
+        groupName: readGroup.groupName,
+        maximumMemberNumber: readGroup.maximumMemberNumber,
         countMember,
       };
 
