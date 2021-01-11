@@ -1,9 +1,11 @@
+/* eslint-disable dot-notation */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-return-assign */
 /* eslint-disable max-len */
 
+const _ = require('lodash');
 const util = require('../modules/util');
 const responseMessage = require('../modules/responseMessage');
 const statusCode = require('../modules/statusCode');
@@ -12,6 +14,7 @@ const { dayjs } = require('../modules/dateTimeModule');
 const dateTimeModule = require('../modules/dateTimeModule');
 
 const groupService = require('../service/groupService');
+const groupProfile = require('../models/groupProfile');
 
 module.exports = {
   createGroup: async (req, res) => {
@@ -75,6 +78,71 @@ module.exports = {
             responseMessage.CREATE_GROUP_FAIL,
           ),
         );
+    }
+  },
+  readGroupList: async (req, res) => {
+    const { id } = req.decoded;
+    const { offset } = req.query;
+
+    if (!offset) {
+      console.log('필요한 쿼리값이 없습니다.');
+      res
+        .status(statusCode.BAD_REQUEST)
+        .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
+    }
+
+    try {
+      const checkMemberId = await groupService.checkMemberId(id);
+
+      if (!checkMemberId) {
+        console.log(responseMessage.NO_GROUP);
+        return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.NO_GROUP, { myGroup: null }));
+      }
+
+      const groupId = checkMemberId.GroupId;
+      const readGroup = await groupService.readGroup(groupId);
+      const countMember = await groupService.countMember(groupId);
+
+      const myGroup = {
+        groupId,
+        groupName: readGroup.groupName,
+        maximumMemberNumber: readGroup.maximumMemberNumber,
+        countMember,
+      };
+
+      const getGroupAll = await groupService.findAllGroupList(Number(offset));
+
+      const getImageGroupList = [];
+      const getNoImageGroupList = [];
+
+      for (const i of getGroupAll) {
+        getImageGroupList.push({
+          groupId: i.GroupId,
+          groupName: i.groupName,
+          imageUrl: i.groupImageUrl,
+          countMember: i.memberCount,
+        });
+        getNoImageGroupList.push({
+          groupId: i.GroupId,
+          groupName: i.groupName,
+          maximumMemberNumber: i.maximumMemberNumber,
+          countMember: i.memberCount,
+        });
+      }
+
+      const hasImageGroupList = _.uniqBy(getImageGroupList, 'groupId')
+        .filter((hasImageGroup) =>
+          hasImageGroup.groupId !== myGroup.groupId);
+
+      const noImageGroupList = _.uniqBy(getNoImageGroupList, 'groupId')
+        .filter((NoImageGroup) =>
+          NoImageGroup.groupId !== myGroup.groupId);
+
+      return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_GROUP_ALL_SUCCESS, { myGroup, hasImageGroupList, noImageGroupList }));
+      // return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_GROUP_ALL_SUCCESS, { getGroupAll }));
+    } catch (error) {
+      console.log(error);
+      return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.READ_GROUP_ALL_FAIL));
     }
   },
   readGroupDetail: async (req, res) => {

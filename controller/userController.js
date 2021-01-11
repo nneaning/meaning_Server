@@ -94,6 +94,8 @@ module.exports = {
         util.success(statusCode.OK, responseMessage.SIGN_IN_SUCCESS, {
           accessToken,
           refreshToken,
+          nickName: checkEmail.nickName,
+          wakeUpTime: checkEmail.wakeUpTime,
         }),
       );
     } catch (error) {

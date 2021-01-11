@@ -60,6 +60,8 @@ module.exports = {
   ALREADY_GROUP: '이미 그룹에 속해 있습니다.',
   JOIN_GROUP_SUCCESS: '그룹 참가 완료',
   JOIN_GROUP_FAIL: '그룹 참가 실패',
+  READ_GROUP_ALL_SUCCESS: '그룹에 가입된 사용자의 전체 그룹 조회 성공',
+  READ_GROUP_ALL_FAIL: '그룹에 가입된 사용자의 전체 그룹 조회 실패',
   MEMBER_NUMBER_LIMITATION: '그룹의 인원이 가득찼습니다.',
 
   /* 그룹 상세정보 */
