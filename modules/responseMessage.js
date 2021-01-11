@@ -46,6 +46,10 @@ module.exports = {
   ALREADY_DAILYMAXIM_CONTENTS: '이미 존재하는 오늘 하루 다짐 문구 입니다.',
   ALREADY_DAILYMAXIM_DATE: '이미 오늘 하루 다짐 문구가 등록된 날짜입니다.',
 
+  /* 자기 회고 및 일기 */
+  CREATE_DAILYDIARY_SUCCESS: '일기 작성 완료',
+  CREATE_DAILYDIARY_FAIL: '일기 작성 실패',
+
   /* 게시글 */
   READ_POST_ALL_SUCCESS: '전체 게시글 조회 성공',
   READ_POST_ALL_FAIL: '전체 게시글 조회 실패',
