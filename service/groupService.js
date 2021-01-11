@@ -111,17 +111,20 @@ module.exports = {
         attributes: [
           'groupName',
           'maximumMemberNumber',
+          [sequelize.fn('COUNT', sequelize.col('id')), 'countMember'],
+
         ],
         include: [{
           model: GroupImage,
           attributes: ['groupImageUrl'],
         }, {
           model: User,
-          attributes: [[sequelize.fn('COUNT', 'id'), 'countMember']],
-          order: [['countMember', 'DESC']],
+          attributes: ['id'],
         }],
+        group: 'groupName',
         offset,
         limit: POST_QUERY_UNIT,
+        // order: [['countMember', 'DESC']],
       });
       return getAllGroupList;
     } catch (err) {
