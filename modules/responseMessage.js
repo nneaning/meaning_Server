@@ -28,6 +28,10 @@ module.exports = {
   READ_TIMESTAMP_ALL_SUCCESS: '전체 타임스탬프 조회 성공',
   READ_TIMESTAMP_ALL_FAIL: '전체 타임스탬프 조회 실패',
 
+  /* 캘린더 */
+  READ_CALENDAR_SUCCESS: '캘린더 조회 성공',
+  READ_CALENDAR_FAIL: '캘린더 조회 실패',
+
   /* 시간, 날짜 포맷 */
   INVALID_DATETIME_FORMAT: '유효하지 않은 날짜, 시간 정보 포맷입니다',
   INVALID_TIME_FORMAT: '유효하지 않은 시간 정보 포맷입니다.',
