@@ -6,6 +6,8 @@ const {
   User, TimeStamp, TodaysPromise, BookComment, Diary,
 } = require('../models');
 
+const GETMYPAGE_QUERY_UNIT = 10;
+
 module.exports = {
   checkEmail: async (email) => {
     try {
@@ -85,7 +87,7 @@ module.exports = {
     try {
       const getMyPage = await TimeStamp.findAll({
         offset,
-        limit: 18,
+        limit: GETMYPAGE_QUERY_UNIT,
         order: [['createdAt', 'DESC']],
         where: {
           UserId: id,
