@@ -6,7 +6,7 @@ const {
   User, TimeStamp, TodaysPromise, BookComment, Diary,
 } = require('../models');
 
-const GETMYPAGE_QUERY_UNIT = 10;
+const GETMYPAGE_QUERY_UNIT = 18;
 
 module.exports = {
   checkEmail: async (email) => {
