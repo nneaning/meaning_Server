@@ -196,7 +196,42 @@ module.exports = {
         .send(
           util.fail(
             statusCode.INTERNAL_SERVER_ERROR,
-            responseMessage.UPDATE_FAIL,
+            responseMessage.UPDATE_ONBOARD_FAIL,
+          ),
+        );
+    }
+  },
+  deleteOnboard: async (req, res) => {
+    try {
+      const { id } = req.query;
+      if (!id) {
+        return res
+          .status(statusCode.BAD_REQUEST)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
+      }
+
+      const checkOnboardUpdated = await userService.deleteOnboard(id);
+      if (!checkOnboardUpdated) {
+        return res
+          .status(statusCode.BAD_REQUEST)
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_USER));
+      }
+
+      return res
+        .status(statusCode.OK)
+        .send(
+          util.success(
+            statusCode.NO_CONTENT,
+            responseMessage.DELETE_ONBOARD_SUCCESS,
+          ),
+        );
+    } catch (error) {
+      return res
+        .status(statusCode.INTERNAL_SERVER_ERROR)
+        .send(
+          util.fail(
+            statusCode.INTERNAL_SERVER_ERROR,
+            responseMessage.DELETE_ONBOARD_FAIL,
           ),
         );
     }

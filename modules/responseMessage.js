@@ -14,6 +14,8 @@ module.exports = {
   /* 온보드 정보 등록 */
   UPDATE_ONBOARD_SUCCESS: '온보드 정보 등록 성공',
   UPDATE_ONBOARD_FAIL: '온보드 정보 등록 실패',
+  DELETE_ONBOARD_SUCCESS: '온보드 정보 삭제 성공',
+  DELETE_ONBOARD_FAIL: '온보드 정보 삭제 실패',
 
   /* 회원관리 */
   ALREADY_ID: '존재하는 ID 입니다.',
