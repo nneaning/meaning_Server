@@ -29,4 +29,12 @@ module.exports = {
       throw err;
     }
   },
+  readTimestamp: async (id) => {
+    const timeStamp = await TimeStamp.findOne({
+      where: {
+        id,
+      },
+    });
+    return timeStamp;
+  },
 };
