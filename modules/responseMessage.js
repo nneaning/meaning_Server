@@ -29,6 +29,7 @@ module.exports = {
   READ_TIMESTAMP_ALL_FAIL: '전체 타임스탬프 조회 실패',
   READ_TIMESTAMP_SUCCESS: '타임스탬프 조회 성공',
   READ_TIMESTAMP_FAIL: '타임스탬프 조회 실패',
+  INVALID_TIMESTAMP_ID: '유효하지 않은 타임스탬프의 id값입니다.',
 
   /* 시간, 날짜 포맷 */
   INVALID_DATETIME_FORMAT: '유효하지 않은 날짜, 시간 정보 포맷입니다',

@@ -115,7 +115,7 @@ module.exports = {
           .send(
             util.fail(
               statusCode.BAD_REQUEST,
-              responseMessage.READ_TIMESTAMP_FAIL,
+              responseMessage.INVALID_TIMESTAMP_ID,
             ),
           );
       }
