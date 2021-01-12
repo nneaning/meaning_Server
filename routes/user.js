@@ -10,6 +10,7 @@ router.post('/signin', userController.signin);
 router.put('/refreshtoken', isLoggedIn.reIssue);
 
 router.put('/onboard', isLoggedIn.checkToken, userController.updateOnboard);
+router.delete('/onboard', userController.deleteOnboard);
 
 router.get('/daypromise', isLoggedIn.checkToken, userController.getDailyMaxim);
 router.post('/daypromise', userController.createDailyMaxim);

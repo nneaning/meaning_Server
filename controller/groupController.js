@@ -288,7 +288,7 @@ module.exports = {
       if (!groupId) {
         return res
           .status(statusCode.BAD_REQUEST)
-          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_USER));
       }
 
       const posts = await groupService.readAllPost(

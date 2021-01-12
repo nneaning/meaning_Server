@@ -146,6 +146,24 @@ module.exports = {
       throw err;
     }
   },
+  deleteOnboard: async (id) => {
+    try {
+      const user = await User.update(
+        {
+          nickName: null,
+          wakeUpTime: null,
+        },
+        {
+          where: {
+            id,
+          },
+        },
+      );
+      return user;
+    } catch (err) {
+      throw err;
+    }
+  },
   createBookComment: async (bookTitle, bookCommentContents, UserId) => {
     try {
       const bookReview = await BookComment.create({
