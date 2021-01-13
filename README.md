@@ -12,9 +12,9 @@
  <h1 align="center"> 🌱  About US </h1>
 
 
-| <h2>상수</h2> | <h2>기문</h2> |  
+| **상수** | **기문** |  
 |:-----:|:-----:|
-|  <img src="https://user-images.githubusercontent.com/59385491/103454428-4f093980-4d27-11eb-8342-4c027bc410a8.png" height=500>| <img src="https://user-images.githubusercontent.com/59385491/103454434-62b4a000-4d27-11eb-8cdf-f771a29173c0.png" height=500> |
+|  <img src="https://user-images.githubusercontent.com/59385491/103454428-4f093980-4d27-11eb-8342-4c027bc410a8.png" height=500 width=650> | <img src="https://user-images.githubusercontent.com/59385491/103454434-62b4a000-4d27-11eb-8cdf-f771a29173c0.png" height=500 width=650> |
 | **contact** : epitoneplus@gmail.com </br> **github**: [epitone](https://github.com/epitoneproject)|**contact** : kkm97351@gmail.com </br> **github**: [tributetothemoon](https://github.com/tributetothemoon)
 | ![sprint1](https://img.shields.io/badge/Meaning-sprint1-red) |![sprint1](https://img.shields.io/badge/Meaning-sprint1-red)  | 
 |RDB 설계, 배포환경구축 |RDB 설계, 배포환경구축 |
@@ -27,13 +27,13 @@
 
 # 📝  List 
 
- **Setting** |  | **Introduction**| |**Communication**| |**Service**| |
+ **Setting** |   **Introduction**| **Communication**| **Service**| 
  :---: | :---: | :---: | :---: |:---:|:---:|:---:|:---:
- 0 | [개발환경](#개발-환경)| 1 | [서비스 소개](#서비스-소개) |6 | [우리가 일하는 방법](#우리가-일하는-방법) |7 | [Dependencies](#Dependencies)
- |||2| [핵심 기능](#핵심-기능)|6-1 | [핵심가치](#핵심가치) |8 | [ER Diagram](#ER-Diagram) 
- |||3|[Work Flow](#work-flow)|6-2 | [칸반보드](#칸반보드) |9 | [Library](#Library)
-|||4|[기능 명세서](#기능-명세서)|6-3|[컨벤션 설정](#컨벤션-설정) | | 
-|||5|[API 명세서](#api-명세서)|| | |  |
+ [개발환경](#개발-환경)| [서비스 소개](#서비스-소개) | [우리가 일하는 방법](#우리가-일하는-방법) |[Dependencies](#Dependencies)
+ || [핵심 기능](#핵심-기능)| [핵심가치](#핵심가치) | [ER Diagram](#ER-Diagram) 
+ ||[Work Flow](#work-flow)| [칸반보드](#칸반보드) | [Library](#Library)
+||[기능 명세서](#기능-명세서)|[컨벤션 설정](#컨벤션-설정) | | 
+||[API 명세서](#api-명세서)|| | |  |
 
 
 <br>
@@ -97,13 +97,16 @@
 <div align="center">
 
 
-| <h2>기능</h2> | <h2>참고사진</h2> |  
+| **기능** | **참고사진** |  
 |:-----:|:-----:|
 | <h2>타임스탬프</h2> </br> 사용자는 미라클 모닝 루틴 중에서 </br> '열심히 무언가 하는 행위'를 시간이 찍혀 있는 카메라로 찍어 기록할 수 있습니다. | <img src="https://user-images.githubusercontent.com/59385491/103470985-51b66e00-4dbd-11eb-90bd-a726b7b70fde.png" height=300>|
 | <h2>오늘 하루 다짐</h2> </br> 사용자는 매일 랜덤으로 주어지는 글귀를  </br> 3번 반복해서 읽으며 미라클모닝에 대한 동기부여를 받을 수 있습니다.|<img src="https://user-images.githubusercontent.com/59385491/103471083-c3db8280-4dbe-11eb-820c-2b30ad50aaef.png" height=300>
 | <h2>자기회고일기</h2> </br> 사용자는 나만 볼 수 있는 회고 및 감사 일기를 써보라는 문구를 읽고, </br> 새 하루를 시작하는 회고 및 감사 일기를 간단히 작성할 수 있습니다. |<img src="https://user-images.githubusercontent.com/59385491/103471128-6562d400-4dbf-11eb-8a90-907c29a4552f.png" height=300> | 
-|<h2>그룹 소통</h2> </br> 사용자는 다양한 그룹과 함께 미라클 모닝 을 즐길 수 있습니다.  </br> 참여하고 싶은 그룹에 가입하여 함께 목표를 향해 노력할 수 있습니다.  |<img src="https://user-images.githubusercontent.com/59385491/103471165-10738d80-4dc0-11eb-839f-0e6504434990.png" height=350> |
-||
+|<h2>캘린더</h2> </br> 사용자는 자신의 총 미션 성공 일수를 확인할 수 있고,    </br>  한달동안 자신이 얼마나 미션에 성공했는지 캘린더로 살펴볼 수 있습니다.  |<img src="https://user-images.githubusercontent.com/59385491/104400502-eaa37100-5595-11eb-8dac-3b60b8e8249e.png" height=350> |
+|<h2>마이페이지</h2> </br> 사용자는 자신이 찍은 타임스탬프를 한눈에 살펴볼 수 있고,  </br> 자신의 총 미션 성공 일수를 확인할 수 있습니다. |<img src="https://user-images.githubusercontent.com/59385491/104400745-45d56380-5596-11eb-899d-90f3e5873b02.png" height=350>  |
+|<h2>그룹 소통</h2> </br> 사용자는 다양한 그룹과 함께 미라클 모닝 을 즐길 수 있습니다.  </br> 참여하고 싶은 그룹에 가입하여 함께 목표를 향해 노력할 수 있습니다. |<img src="https://user-images.githubusercontent.com/59385491/103471165-10738d80-4dc0-11eb-839f-0e6504434990.png" height=350>  |
+|<h2>그룹 피드</h2> </br> 다른 사용자의 미라클모닝 인증 내용을 한눈에 살펴볼 수 있고,  </br> 그룹의 총인원수, 다른 사용자의 기상 시간을 확인할 수 있습니다. |<img src="https://user-images.githubusercontent.com/59385491/104401053-c300d880-5596-11eb-9d5a-5557907b1c8c.png" height=350>  |
+
 
 
 
@@ -114,7 +117,7 @@
 </br>
 </br>
 
-# ⚡️ Work Flow 
+# ⚡️ Work Flow (수정 예정)
 
 -  추가 예정
 
@@ -177,7 +180,7 @@
 
 
 
-# 🛠 Dependencies
+# 🛠 Dependencies (수정 예정)
 
 ```
 "dependencies": {
@@ -206,11 +209,15 @@
 
 </br>
 
+# 🏠 Architecture (수정 예정)
+
+-  추가 예정
+
 </br>
 
 # 💥 ER-Diagram
 
-<img src="https://user-images.githubusercontent.com/59385491/103462959-3ec77d80-4d6c-11eb-9313-59f30d12b778.png" height=700>
+<img src="https://user-images.githubusercontent.com/59385491/104401623-eb3d0700-5597-11eb-9c7d-6a7064c45ea3.png" height=700>
 
 </br>
 </br>
