@@ -72,7 +72,7 @@ module.exports = {
 
       const dto = {
         timeStampId: timeStamp.id,
-        misstionStatus: timeStampMissionStatus,
+        missionStatus: timeStampMissionStatus,
       };
 
       const checkHasGroup = await groupService.checkMemberId(userId);
