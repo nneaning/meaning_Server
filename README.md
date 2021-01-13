@@ -30,13 +30,13 @@
 
 <div align=center> 
 
-| **Setting**       |   **Introduction**    | **Communication**                | **Service**                 | 
-| :---:             | :---:                 | :---:                            | :---:                        |
-| [💻 개발환경](#💻-개발-환경)| [☀️ 서비스 소개](#☀️-서비스-소개) | [👬 우리가 일하는 방법](#👬-우리가-일하는-방법) |[🛠 Dependencies](#🛠-Dependencies) |
-|                   | [🚀 핵심 기능](#🚀-핵심-기능)    | [👏🏻 핵심가치](#👏🏻-핵심가치)                | [🏠 Architecture](#🏠-Architecture) | 
-|                   |[⚡️ Work Flow](#⚡️-work-flow) | [🎯 칸반보드](#🎯-칸반보드)                | [💥 ER Diagram](#💥-ER-Diagram) |
-|                   |[💼 기능 명세서](#💼-기능-명세서)  |[🕶 컨벤션 설정](#🕶-컨벤션-설정)             |   [📚 Library](#📚-Library)             | 
-|                   |[🗂 API 명세서](#🗂-api-명세서)  |                                  |                     | 
+| **Setting** |   **Introduction**  | **Communication**    | **Service**         | 
+| :---:       | :---:               | :---:                            | :---:   |
+| **💻 개발환경**| **☀️ 서비스 소개** | **👬 우리가 일하는 방법** |**🛠 Dependencies**       |
+|             | **🚀 핵심 기능**  | **👏🏻 핵심가치**         | **🏠 Architecture**      | 
+|             | **⚡️ Work Flow** | **🎯 칸반보드**         | **💥 ER Diagram**       |
+|             | **💼 기능 명세서**  |**🕶 컨벤션 설정**       |   **📚 Library**        | 
+|             | **🗂 API 명세서**  |                      |                         | 
 
 </div>
 
@@ -202,7 +202,7 @@
 
 <div align=center>
 
-<img src="https://user-images.githubusercontent.com/59385491/104446035-362d3d80-55dd-11eb-923d-bc120ada40d2.png" height=400>
+<img src="https://user-images.githubusercontent.com/59385491/104458654-01c27d00-55ef-11eb-9fc8-ca60bd732e73.png" height=390>
 
 </div>
 
