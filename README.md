@@ -210,7 +210,9 @@
 
 # 💥 ER-Diagram
 
-<img src="https://user-images.githubusercontent.com/59385491/104401623-eb3d0700-5597-11eb-9c7d-6a7064c45ea3.png" height=1000>
+<div align=center>
+<img src="https://user-images.githubusercontent.com/59385491/104401623-eb3d0700-5597-11eb-9c7d-6a7064c45ea3.png" height=750>
+</div>
 
 </br>
 </br>
