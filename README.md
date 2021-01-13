@@ -122,7 +122,7 @@
 </br>
 </br>
 
-# ⚡️ Work Flow (수정 예정)
+# ⚡️ Work Flow
 
 -  추가 예정
 
@@ -195,9 +195,13 @@
 
 
 
-# 🏠 Architecture (수정 예정)
+# 🏠 Architecture
 
--  추가 예정
+<div align=center>
+
+<img src="https://user-images.githubusercontent.com/59385491/104446035-362d3d80-55dd-11eb-923d-bc120ada40d2.png" height=450>
+
+</div>
 
 </br>
 </br>
@@ -206,7 +210,7 @@
 
 # 💥 ER-Diagram
 
-<img src="https://user-images.githubusercontent.com/59385491/104401623-eb3d0700-5597-11eb-9c7d-6a7064c45ea3.png" height=700>
+<img src="https://user-images.githubusercontent.com/59385491/104401623-eb3d0700-5597-11eb-9c7d-6a7064c45ea3.png" height=1000>
 
 </br>
 </br>
