@@ -146,6 +146,46 @@ module.exports = {
       return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.READ_GROUP_ALL_FAIL));
     }
   },
+  readMyGroup: async (req, res) => {
+    try {
+      const { id } = req.decoded;
+      const checkMemberId = await groupService.checkMemberId(id);
+
+      let dto;
+      if (checkMemberId) {
+        const groupId = checkMemberId.GroupId;
+        const readGroup = await groupService.readGroup(groupId);
+        const countMember = await groupService.countMember(groupId);
+
+        dto = {
+          groupId,
+          groupName: readGroup.groupName,
+          countMember,
+          maximumMemberNumber: readGroup.maximumMemberNumber,
+        };
+      } else {
+        dto = null;
+      }
+
+      return res
+        .status(statusCode.OK)
+        .send(
+          util.success(statusCode.OK, responseMessage.READ_GROUP_SUCCESS, {
+            dto,
+          }),
+        );
+    } catch (error) {
+      console.log(error);
+      return res
+        .status(statusCode.INTERNAL_SERVER_ERROR)
+        .send(
+          util.fail(
+            statusCode.INTERNAL_SERVER_ERROR,
+            responseMessage.READ_GROUP_ALL_FAIL,
+          ),
+        );
+    }
+  },
   readGroupDetail: async (req, res) => {
     try {
       const { groupId } = req.params;
