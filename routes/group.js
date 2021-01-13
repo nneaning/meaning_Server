@@ -6,6 +6,7 @@ const isLoggedIn = require('../middlewares/authUtil');
 const upload = require('../modules/multer');
 
 router.post('/', isLoggedIn.checkToken, groupController.createGroup);
+router.get('/my', isLoggedIn.checkToken, groupController.readMyGroup);
 router.get('/', isLoggedIn.checkToken, groupController.readGroupList);
 router.get('/:groupId', isLoggedIn.checkToken, groupController.readGroupDetail);
 router.post('/upload', upload.single('image'), groupController.createGroupImage);
