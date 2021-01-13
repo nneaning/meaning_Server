@@ -170,9 +170,7 @@ module.exports = {
       return res
         .status(statusCode.OK)
         .send(
-          util.success(statusCode.OK, responseMessage.READ_GROUP_SUCCESS, {
-            dto,
-          }),
+          util.success(statusCode.OK, responseMessage.READ_GROUP_SUCCESS, dto),
         );
     } catch (error) {
       console.log(error);
