@@ -362,9 +362,10 @@ module.exports = {
         groupName,
         introduction,
         maximumMemberNumber,
+        createdAt,
       } = await groupService.readGroup(groupId);
 
-      if (!groupName || !introduction || !maximumMemberNumber) {
+      if (!groupName || !introduction || !maximumMemberNumber || !createdAt) {
         return res
           .status(statusCode.BAD_REQUEST)
           .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_SUCH_GROUP));
@@ -375,15 +376,16 @@ module.exports = {
         groupName,
         introduction,
         maximumMemberNumber,
+        createdAt,
       };
 
       const users = await groupService.readAllUsers(groupId);
       for (const { dataValues } of users) {
-        const { createdAt } = await groupService.checkMemberId(dataValues.id);
+        const { createdAt: memberCreatedAt } = await groupService.checkMemberId(dataValues.id);
         dataValues.dayPassed = Math.floor(
           dateTimeModule.getDateDifference(
             dayjs().format(dateTimeModule.FORMAT_DATETIME),
-            createdAt,
+            memberCreatedAt,
           ) + 1,
         );
       }
