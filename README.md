@@ -185,40 +185,24 @@
 
 
 
-# 🛠 Dependencies (수정 예정)
+# 🛠 Dependencies
 
-```
-"dependencies": {
-    "aws-sdk": "^2.820.0",
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jsonwebtoken": "^8.5.1",
-    "morgan": "~1.9.1",
-    "multer": "^1.4.2",
-    "multer-s3": "^2.9.0",
-    "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5",
-    "sequelize-cli": "^6.2.0"
-  },
-  "devDependencies": {
-    "eslint": "^7.15.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^7.0.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-prettier": "^3.3.0",
-    "prettier": "2.2.1"
-  }
-```
+<img src="https://user-images.githubusercontent.com/59385491/104410947-bd15f200-55ac-11eb-9568-0d354eaea5bb.png" height=800>
 
 </br>
+</br>
+</br>
+
+
 
 # 🏠 Architecture (수정 예정)
 
 -  추가 예정
 
 </br>
+</br>
+</br>
+
 
 # 💥 ER-Diagram
 
