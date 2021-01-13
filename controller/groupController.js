@@ -93,6 +93,13 @@ module.exports = {
         .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
     }
 
+    if (Number.isNaN(Number(offset))) {
+      console.log('파라미터 타입이 잘못되었습니다.');
+      return res
+        .status(statusCode.BAD_REQUEST)
+        .send(util.fail(statusCode.BAD_REQUEST, responseMessage.INVALID_PARAMETER_TYPE));
+    }
+
     try {
       const getGroupAll = await groupService.findAllGroupList(Number(offset));
 
@@ -117,30 +124,21 @@ module.exports = {
       const checkMemberId = await groupService.checkMemberId(id);
 
       if (!checkMemberId) {
-        console.log(responseMessage.NO_GROUP);
-        return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.NO_GROUP, { myGroup: null, hasImageGroupList: getImageGroupList, noImageGroupList: getNoImageGroupList }));
+        console.log(responseMessage.READ_GROUP_SUCCESS);
+        return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_GROUP_SUCCESS, { hasImageGroupList: getImageGroupList, noImageGroupList: getNoImageGroupList }));
       }
 
       const groupId = checkMemberId.GroupId;
-      const readGroup = await groupService.readGroup(groupId);
-      const countMember = await groupService.countMember(groupId);
-
-      const myGroup = {
-        groupId,
-        groupName: readGroup.groupName,
-        maximumMemberNumber: readGroup.maximumMemberNumber,
-        countMember,
-      };
 
       const hasImageGroupList = _.uniqBy(getImageGroupList, 'groupId')
         .filter((hasImageGroup) =>
-          hasImageGroup.groupId !== myGroup.groupId);
+          hasImageGroup.groupId !== groupId);
 
       const noImageGroupList = _.uniqBy(getNoImageGroupList, 'groupId')
         .filter((NoImageGroup) =>
-          NoImageGroup.groupId !== myGroup.groupId);
+          NoImageGroup.groupId !== groupId);
 
-      return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_GROUP_ALL_SUCCESS, { myGroup, hasImageGroupList, noImageGroupList }));
+      return res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.READ_GROUP_ALL_SUCCESS, { hasImageGroupList, noImageGroupList }));
     } catch (error) {
       console.log(error);
       return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.READ_GROUP_ALL_FAIL));
@@ -192,10 +190,10 @@ module.exports = {
       const checkGroupId = await groupService.readGroup(groupId);
 
       if (!checkGroupId) {
-        console.log(responseMessage.NO_GROUP);
+        console.log(responseMessage.NO_SUCH_GROUP);
         return res
           .status(statusCode.BAD_REQUEST)
-          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_GROUP));
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_SUCH_GROUP));
       }
 
       const groupDetail = {
@@ -369,7 +367,7 @@ module.exports = {
       if (!groupName || !introduction || !maximumMemberNumber) {
         return res
           .status(statusCode.BAD_REQUEST)
-          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_GROUP));
+          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_SUCH_GROUP));
       }
 
       const group = {
