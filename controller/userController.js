@@ -77,10 +77,9 @@ module.exports = {
           .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_USER));
       }
 
-      const { salt, password: hashedPassword } = checkEmail;
-      const user = await userService.signin(email, password, salt);
+      const { salt, password: realPassword } = checkEmail;
 
-      if (user.password !== hashedPassword) {
+      if (await userService.encryptPassword(password, salt) !== realPassword) {
         console.log('비밀번호가 일치하지 않습니다.');
         return res
           .status(statusCode.BAD_REQUEST)
@@ -88,6 +87,8 @@ module.exports = {
             util.fail(statusCode.BAD_REQUEST, responseMessage.MISS_MATCH_PW),
           );
       }
+
+      const user = await userService.signin(email, password, salt);
 
       const { accessToken, refreshToken } = await jwt.sign(user);
       return res.status(statusCode.OK).send(
@@ -102,7 +103,7 @@ module.exports = {
       console.log(error);
       return res
         .status(statusCode.INTERNAL_SERVER_ERROR)
-        .send(util.fail(statusCode.BAD_REQUEST, responseMessage.SIGN_IN_FAIL));
+        .send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.SIGN_IN_FAIL));
     }
   },
   getMyPage: async (req, res) => {

@@ -8,6 +8,16 @@ const {
 
 const GETMYPAGE_QUERY_UNIT = 18;
 
+async function encryptPassword(password, salt) {
+  try {
+    return crypto
+      .pbkdf2Sync(password, salt, 10000, 64, 'sha512')
+      .toString('base64');
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   checkEmail: async (email) => {
     try {
@@ -66,6 +76,7 @@ module.exports = {
       throw err;
     }
   },
+  encryptPassword,
   updateRefreshToken: async (id, refreshToken) => {
     try {
       const user = await User.update(
