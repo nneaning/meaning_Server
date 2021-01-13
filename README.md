@@ -27,6 +27,8 @@
 
 # 📝  List 
 
+<div align=center> 
+
 | **Setting**       |   **Introduction**    | **Communication**                | **Service**                 | 
 | :---:             | :---:                 | :---:                            | :---:                        |
 | [개발환경](#개발-환경)| [서비스 소개](#서비스-소개) | [우리가 일하는 방법](#우리가-일하는-방법) |[Dependencies](#Dependencies) |
@@ -35,6 +37,7 @@
 |                   |[기능 명세서](#기능-명세서)  |[컨벤션 설정](#컨벤션-설정)             |                     | 
 |                   |[API 명세서](#api-명세서)  |                                  |                     | 
 
+</div>
 
 <br>
 <br>
