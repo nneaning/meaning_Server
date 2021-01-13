@@ -14,6 +14,8 @@ module.exports = {
   /* 온보드 정보 등록 */
   UPDATE_ONBOARD_SUCCESS: '온보드 정보 등록 성공',
   UPDATE_ONBOARD_FAIL: '온보드 정보 등록 실패',
+  DELETE_ONBOARD_SUCCESS: '온보드 정보 삭제 성공',
+  DELETE_ONBOARD_FAIL: '온보드 정보 삭제 실패',
 
   /* 회원관리 */
   ALREADY_ID: '존재하는 ID 입니다.',
@@ -27,6 +29,13 @@ module.exports = {
   CREATE_TIMESTAMP_FAIL: '타임스탬프 생성 실패',
   READ_TIMESTAMP_ALL_SUCCESS: '전체 타임스탬프 조회 성공',
   READ_TIMESTAMP_ALL_FAIL: '전체 타임스탬프 조회 실패',
+  READ_TIMESTAMP_SUCCESS: '타임스탬프 조회 성공',
+  READ_TIMESTAMP_FAIL: '타임스탬프 조회 실패',
+  INVALID_TIMESTAMP_ID: '유효하지 않은 타임스탬프의 id값입니다.',
+
+  /* 캘린더 */
+  READ_CALENDAR_SUCCESS: '캘린더 조회 성공',
+  READ_CALENDAR_FAIL: '캘린더 조회 실패',
 
   /* 시간, 날짜 포맷 */
   INVALID_DATETIME_FORMAT: '유효하지 않은 날짜, 시간 정보 포맷입니다',

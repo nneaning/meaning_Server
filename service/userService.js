@@ -148,6 +148,24 @@ module.exports = {
       throw err;
     }
   },
+  deleteOnboard: async (id) => {
+    try {
+      const user = await User.update(
+        {
+          nickName: null,
+          wakeUpTime: null,
+        },
+        {
+          where: {
+            id,
+          },
+        },
+      );
+      return user;
+    } catch (err) {
+      throw err;
+    }
+  },
   createBookComment: async (bookTitle, bookCommentContents, UserId) => {
     try {
       const bookReview = await BookComment.create({
@@ -156,18 +174,6 @@ module.exports = {
         UserId,
       });
       return bookReview;
-    } catch (err) {
-      throw err;
-    }
-  },
-  checkBookComment: async (bookCommentContents) => {
-    try {
-      const alreadyBookReview = await BookComment.findOne({
-        where: {
-          bookCommentContents,
-        },
-      });
-      return alreadyBookReview;
     } catch (err) {
       throw err;
     }
