@@ -202,7 +202,7 @@
 
 <div align=center>
 
-<img src="https://user-images.githubusercontent.com/59385491/104458654-01c27d00-55ef-11eb-9fc8-ca60bd732e73.png" height=390>
+<img src="https://user-images.githubusercontent.com/59385491/104458654-01c27d00-55ef-11eb-9fc8-ca60bd732e73.png" height=340>
 
 </div>
 
