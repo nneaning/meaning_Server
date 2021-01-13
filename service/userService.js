@@ -178,18 +178,6 @@ module.exports = {
       throw err;
     }
   },
-  checkBookComment: async (bookCommentContents) => {
-    try {
-      const alreadyBookReview = await BookComment.findOne({
-        where: {
-          bookCommentContents,
-        },
-      });
-      return alreadyBookReview;
-    } catch (err) {
-      throw err;
-    }
-  },
   createDailyMaxim: async (todaysPromiseContents, date) => {
     try {
       const dailyMaxim = await TodaysPromise.create({
