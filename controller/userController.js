@@ -7,7 +7,7 @@ const jwt = require('../modules/jwt');
 const util = require('../modules/util');
 const responseMessage = require('../modules/responseMessage');
 const statusCode = require('../modules/statusCode');
-
+const encryptModule = require('../modules/encryptModule');
 const dateTimeModule = require('../modules/dateTimeModule');
 
 const { dayjs } = dateTimeModule;
@@ -79,7 +79,7 @@ module.exports = {
 
       const { salt, password: realPassword } = checkEmail;
 
-      if (await userService.encryptPassword(password, salt) !== realPassword) {
+      if (encryptModule.encryptPassword(password, salt) !== realPassword) {
         console.log('비밀번호가 일치하지 않습니다.');
         return res
           .status(statusCode.UNAUTHORIZED)

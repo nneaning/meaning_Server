@@ -1,22 +1,13 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-useless-catch */
 
-const crypto = require('crypto');
 const {
   User, TimeStamp, TodaysPromise, BookComment, Diary,
 } = require('../models');
 
-const GETMYPAGE_QUERY_UNIT = 18;
+const encryptModule = require('../modules/encryptModule');
 
-async function encryptPassword(password, salt) {
-  try {
-    return crypto
-      .pbkdf2Sync(password, salt, 10000, 64, 'sha512')
-      .toString('base64');
-  } catch (error) {
-    throw error;
-  }
-}
+const GETMYPAGE_QUERY_UNIT = 18;
 
 module.exports = {
   checkEmail: async (email) => {
@@ -45,8 +36,8 @@ module.exports = {
   },
   signup: async (email, userName, password) => {
     try {
-      const salt = crypto.randomBytes(64).toString('base64');
-      const hashedPassword = await encryptPassword(password, salt);
+      const salt = encryptModule.generateSalt();
+      const hashedPassword = encryptModule.encryptPassword(password, salt);
       const user = await User.create({
         email,
         userName,
@@ -60,7 +51,7 @@ module.exports = {
   },
   signin: async (email, password, salt) => {
     try {
-      const inputPassword = await encryptPassword(password, salt);
+      const inputPassword = encryptModule.encryptPassword(password, salt);
       const user = await User.findOne({
         where: {
           email,
@@ -72,7 +63,6 @@ module.exports = {
       throw err;
     }
   },
-  encryptPassword,
   updateRefreshToken: async (id, refreshToken) => {
     try {
       const user = await User.update(
