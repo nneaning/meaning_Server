@@ -44,28 +44,30 @@
 <br>
 
 # 💻 개발 환경  
+
+<div align=center>
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fnneaning%2Fmeaning_Server&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 ![박상수](https://img.shields.io/badge/Developer-%EB%B0%95%EC%83%81%EC%88%98-blue)
 ![김기문](https://img.shields.io/badge/Developer-%EA%B9%80%EA%B8%B0%EB%AC%B8-blue)
 [![Meaning](https://img.shields.io/badge/Meaning-Server-blue)](https://github.com/nneaning/meaning_Server)
 ![npm](https://img.shields.io/badge/npm-6.13.4-yellow)
 ![node](https://img.shields.io/badge/node-12.16.0-orange) 
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fnneaning%2Fmeaning_Server&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
-
-
-
-
 
 ![NodeJS](https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white)
 ![Express.js](https://img.shields.io/badge/express.js%20-%23404d59.svg?&style=for-the-badge)
 ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?&style=for-the-badge&logo=mysql&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS%20-%23FF9900.svg?&style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Nginx](https://img.shields.io/badge/nginx%20-%23009639.svg?&style=for-the-badge&logo=nginx&logoColor=white)
+
 ![Git](https://img.shields.io/badge/git%20-%23F05033.svg?&style=for-the-badge&logo=git&logoColor=white)
 ![Github](https://img.shields.io/badge/github%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)
 ![VSCode](https://camo.githubusercontent.com/6f0047f9b97eac434d5c7bef0867fbe51feff87d049c06c1164b45a55598032d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7673636f64652d3030374143433f7374796c653d666f722d7468652d6261646765266c6f676f436f6c6f723d7768697465266c6f676f3d76697375616c2d73747564696f2d636f6465)
 ![Slack](https://camo.githubusercontent.com/3c410d759dbc34dcb71012345f942e06b9c29bd4e54d7071e24d039e3a6dc584/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f536c61636b2d3441313534423f7374796c653d666f722d7468652d6261646765266c6f676f436f6c6f723d7768697465266c6f676f3d736c61636b)
 ![Notion](https://camo.githubusercontent.com/9974145fe23b6a9f07b5da3fd8fa7e881b6a501c7c78cc99a6a6bd8780759fa1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6f74696f6e2d3030303030303f7374796c653d666f722d7468652d6261646765266c6f676f436f6c6f723d7768697465266c6f676f3d6e6f74696f6e)
 
+</div>
 <br>
 <br>
 <br>
