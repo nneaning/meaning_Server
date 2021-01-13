@@ -46,9 +46,7 @@ module.exports = {
   signup: async (email, userName, password) => {
     try {
       const salt = crypto.randomBytes(64).toString('base64');
-      const hashedPassword = crypto
-        .pbkdf2Sync(password, salt, 10000, 64, 'sha512')
-        .toString('base64');
+      const hashedPassword = await encryptPassword(password, salt);
       const user = await User.create({
         email,
         userName,
@@ -62,9 +60,7 @@ module.exports = {
   },
   signin: async (email, password, salt) => {
     try {
-      const inputPassword = crypto
-        .pbkdf2Sync(password, salt, 10000, 64, 'sha512')
-        .toString('base64');
+      const inputPassword = await encryptPassword(password, salt);
       const user = await User.findOne({
         where: {
           email,
