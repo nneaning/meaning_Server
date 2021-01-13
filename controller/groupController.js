@@ -29,13 +29,22 @@ module.exports = {
     }
     try {
       const checkMemberId = await groupService.checkMemberId(id);
-
       if (checkMemberId) {
         console.log(responseMessage.ALREADY_GROUP);
         return res
-          .status(statusCode.BAD_REQUEST)
+          .status(statusCode.FORBIDDEN)
           .send(
-            util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_GROUP),
+            util.fail(statusCode.FORBIDDEN, responseMessage.ALREADY_GROUP),
+          );
+      }
+
+      const checkGroupName = await groupService.readGroupByName(groupName);
+      if (checkGroupName) {
+        console.log(responseMessage.ALREADY_GROUP_NAME);
+        return res
+          .status(statusCode.NOT_ACCEPTABLE)
+          .send(
+            util.fail(statusCode.NOT_ACCEPTABLE, responseMessage.ALREADY_GROUP_NAME),
           );
       }
 

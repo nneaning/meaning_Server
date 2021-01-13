@@ -33,6 +33,18 @@ module.exports = {
       throw err;
     }
   },
+  readGroupByName: async (groupName) => {
+    try {
+      const group = await Group.findOne({
+        where: {
+          groupName,
+        },
+      });
+      return group;
+    } catch (err) {
+      throw err;
+    }
+  },
   checkMemberId: async (id) => {
     try {
       const findMemberId = await Member.findOne({
