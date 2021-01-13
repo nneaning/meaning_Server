@@ -73,6 +73,7 @@ module.exports = {
   CREATE_GROUP_FAIL: '그룹 생성 실패',
   NO_GROUP: '가입된 그룹이 없습니다.',
   ALREADY_GROUP: '이미 그룹에 속해 있습니다.',
+  ALREADY_GROUP_NAME: '이미 있는 그룹명입니다.',
   JOIN_GROUP_SUCCESS: '그룹 참가 완료',
   JOIN_GROUP_FAIL: '그룹 참가 실패',
   READ_GROUP_SUCCESS: '그룹 조회 성공',
