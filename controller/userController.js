@@ -140,7 +140,7 @@ module.exports = {
         .status(statusCode.INTERNAL_SERVER_ERROR)
         .send(
           util.fail(
-            statusCode.BAD_REQUEST,
+            statusCode.INTERNAL_SERVER_ERROR,
             responseMessage.READ_TIMESTAMP_ALL_FAIL,
           ),
         );
