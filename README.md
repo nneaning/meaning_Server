@@ -235,5 +235,6 @@
 - [Express](https://expressjs.com/ko/) : NodeJs Framework
 - [NPM](https://www.npmjs.com/) : NodeJS package manager
 - [PM2](https://pm2.io/) : NodeJS process manager
+- [Lodash](https://lodash.com/) : 자바스크립트 유틸리티 라이브러리
 
 <br>
