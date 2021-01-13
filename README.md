@@ -32,11 +32,11 @@
 
 | **Setting** |   **Introduction**  | **Communication**    | **Service**         | 
 | :---:       | :---:               | :---:                            | :---:   |
-| **💻 개발환경**| **☀️ 서비스 소개** | **👬 우리가 일하는 방법** |**🛠 Dependencies**       |
-|             | **🚀 핵심 기능**  | **👏🏻 핵심가치**         | **🏠 Architecture**      | 
-|             | **⚡️ Work Flow** | **🎯 칸반보드**         | **💥 ER Diagram**       |
-|             | **💼 기능 명세서**  |**🕶 컨벤션 설정**       |   **📚 Library**        | 
-|             | **🗂 API 명세서**  |                      |                         | 
+| 💻 개발환경    | ☀️ 서비스 소개 | 👬 우리가 일하는 방법 | 🛠 Dependencies       |
+|             | 🚀 핵심 기능  | 👏🏻 핵심가치         | 🏠 Architecture      | 
+|             | ⚡️ Work Flow | 🎯 칸반보드         | 💥 ER Diagram       |
+|             | 💼 기능 명세서  |🕶 컨벤션 설정      |   📚 Library        | 
+|             | 🗂 API 명세서  |                      |                         | 
 
 </div>
 
