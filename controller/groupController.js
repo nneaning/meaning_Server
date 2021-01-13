@@ -160,6 +160,7 @@ module.exports = {
         dto = {
           groupId,
           groupName: readGroup.groupName,
+          introduction: readGroup.introduction,
           countMember,
           maximumMemberNumber: readGroup.maximumMemberNumber,
         };
