@@ -159,6 +159,8 @@ module.exports = {
     const { id } = req.decoded;
     try {
       const getMySuccessDay = await userService.getMySuccessDay(id);
+
+      console.log(getMySuccessDay);
       let successDays = 0;
 
       getMySuccessDay.forEach((day) =>
@@ -171,9 +173,9 @@ module.exports = {
         getCalendarList.push({ dateTime: day.dateTime.split(' ')[0], status: day.status }));
 
       const findLastDay = new Date(2021, 1, 0);
-      const getLastDate = `${dayjs(findLastDay).format(dateTimeModule.FORMAT_DATE)}`;
+      const getLastDate = dayjs(findLastDay).daysInMonth();
 
-      for (let i = 1; i <= getLastDate.split('-')[2]; i++) {
+      for (let i = 1; i <= getLastDate; i++) {
         getCalendarList.push({ dateTime: `${dayjs(new Date(2021, 0, i)).format(dateTimeModule.FORMAT_DATE)}`, status: 0 });
       }
 
