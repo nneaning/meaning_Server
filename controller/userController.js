@@ -82,9 +82,9 @@ module.exports = {
       if (await userService.encryptPassword(password, salt) !== realPassword) {
         console.log('비밀번호가 일치하지 않습니다.');
         return res
-          .status(statusCode.BAD_REQUEST)
+          .status(statusCode.UNAUTHORIZED)
           .send(
-            util.fail(statusCode.BAD_REQUEST, responseMessage.MISS_MATCH_PW),
+            util.fail(statusCode.UNAUTHORIZED, responseMessage.MISS_MATCH_PW),
           );
       }
 
