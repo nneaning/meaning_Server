@@ -215,10 +215,10 @@ module.exports = {
         group.maximumMemberNumber <= (await groupService.countMember(groupId))
       ) {
         return res
-          .status(statusCode.BAD_REQUEST)
+          .status(statusCode.NOT_ACCEPTABLE)
           .send(
             util.fail(
-              statusCode.BAD_REQUEST,
+              statusCode.NOT_ACCEPTABLE,
               responseMessage.MEMBER_NUMBER_LIMITATION,
             ),
           );
