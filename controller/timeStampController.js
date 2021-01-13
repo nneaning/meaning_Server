@@ -160,7 +160,19 @@ module.exports = {
     try {
       const getMySuccessDay = await userService.getMySuccessDay(id);
 
-      console.log(getMySuccessDay);
+      if (!getMySuccessDay) {
+        console.log(responseMessage.NO_USER_CALENDAR);
+        return res
+          .status(statusCode.NO_CONTENT)
+          .send(
+            util.success(
+              statusCode.NO_CONTENT,
+              responseMessage.NO_USER_CALENDAR,
+              { successDays, calendar },
+            ),
+          );
+      }
+
       let successDays = 0;
 
       getMySuccessDay.forEach((day) =>
