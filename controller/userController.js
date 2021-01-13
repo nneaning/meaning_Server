@@ -345,13 +345,6 @@ module.exports = {
           .status(statusCode.BAD_REQUEST)
           .send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
       }
-      const checkBookComment = await userService.checkBookComment(bookCommentContents);
-
-      if (checkBookComment) {
-        return res
-          .status(statusCode.BAD_REQUEST)
-          .send(util.fail(statusCode.BAD_REQUEST, responseMessage.ALREADY_BOOKCOMMENT));
-      }
 
       const bookReview = await userService.createBookComment(bookTitle, bookCommentContents, id);
       return res
