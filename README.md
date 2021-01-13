@@ -187,7 +187,9 @@
 
 # 🛠 Dependencies
 
+<div align=center>
 <img src="https://user-images.githubusercontent.com/59385491/104410947-bd15f200-55ac-11eb-9568-0d354eaea5bb.png" height=900>
+</div>
 
 </br>
 </br>
