@@ -78,7 +78,12 @@
 <div align="center">
 
 
-<img src="https://user-images.githubusercontent.com/59385491/103462749-c0b6a700-4d6a-11eb-9cc4-8865eb33a90a.png" height=200>
+<img src="https://user-images.githubusercontent.com/59385491/104572713-5cafaf00-5697-11eb-8192-84ac6f57678e.png" height=200>
+<p>
+<img src="https://user-images.githubusercontent.com/59385491/104572745-66d1ad80-5697-11eb-9a09-12d1e9318e52.png" height=50>
+
+
+
 
 **<h3>모든 것은 바뀔 수 있고 나 역시 무언가를 바꿀 수 있습니다.</h3>**
 
