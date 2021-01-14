@@ -15,6 +15,9 @@ const { dayjs } = dateTimeModule;
 
 const userService = require('../service/userService');
 
+const IMAGE_ORIGIN_PATH = '/images/origin';
+const IMAGE_W200_PATH = '/images/w_200';
+
 module.exports = {
   signup: async (req, res) => {
     const { email, userName, password } = req.body;
@@ -128,7 +131,7 @@ module.exports = {
         (successDays += day.status));
 
       for (const { dataValues } of getMyPage) { // send resized image URL
-        dataValues.timeStampImageUrl = dataValues.timeStampImageUrl.replace('/images/origin', '/images/w_200');
+        dataValues.timeStampImageUrl = dataValues.timeStampImageUrl.replace(IMAGE_ORIGIN_PATH, IMAGE_W200_PATH);
       }
 
       return res
