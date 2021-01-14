@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable arrow-parens */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-return-assign */
@@ -125,6 +126,10 @@ module.exports = {
 
       getMySuccessDay.forEach(day =>
         (successDays += day.status));
+
+      for (const { dataValues } of getMyPage) { // send resized image URL
+        dataValues.timeStampImageUrl = dataValues.timeStampImageUrl.replace('/images/origin', '/images/w_200');
+      }
 
       return res
         .status(statusCode.OK)
