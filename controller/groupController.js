@@ -53,7 +53,7 @@ module.exports = {
       );
       const countGroupImageId = await groupService.countGroupImageId();
 
-      const groupImageId = Number(groupId % countGroupImageId.length);
+      const groupImageId = Number(groupId % countGroupImageId.length + 1);
 
       const createGroupProfile = await groupService.createGroupProfile(
         groupId,
