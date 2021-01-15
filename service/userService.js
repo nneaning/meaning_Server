@@ -1,10 +1,11 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-useless-catch */
 
-const crypto = require('crypto');
 const {
   User, TimeStamp, TodaysPromise, BookComment, Diary,
 } = require('../models');
+
+const encryptModule = require('../modules/encryptModule');
 
 const GETMYPAGE_QUERY_UNIT = 18;
 
@@ -35,10 +36,8 @@ module.exports = {
   },
   signup: async (email, userName, password) => {
     try {
-      const salt = crypto.randomBytes(64).toString('base64');
-      const hashedPassword = crypto
-        .pbkdf2Sync(password, salt, 10000, 64, 'sha512')
-        .toString('base64');
+      const salt = encryptModule.generateSalt();
+      const hashedPassword = encryptModule.encryptPassword(password, salt);
       const user = await User.create({
         email,
         userName,
@@ -52,9 +51,7 @@ module.exports = {
   },
   signin: async (email, password, salt) => {
     try {
-      const inputPassword = crypto
-        .pbkdf2Sync(password, salt, 10000, 64, 'sha512')
-        .toString('base64');
+      const inputPassword = encryptModule.encryptPassword(password, salt);
       const user = await User.findOne({
         where: {
           email,
