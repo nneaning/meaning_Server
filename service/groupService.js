@@ -7,7 +7,7 @@ const {
   User, Group, Member, GroupImage, GroupProfile, sequelize, TimeStamp,
 } = require('../models');
 
-const POST_QUERY_UNIT = 10;
+const POST_QUERY_UNIT = 18;
 
 module.exports = {
   createGroup: async (groupName, maximumMemberNumber, introduction) => {
