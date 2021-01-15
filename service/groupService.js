@@ -97,11 +97,11 @@ module.exports = {
       throw err;
     }
   },
-  createGroupProfile: async (groupId, countGroupImageId) => {
+  createGroupProfile: async (groupId, groupImageId) => {
     try {
       const makeGroupProfile = await GroupProfile.create({
         GroupId: groupId,
-        GroupImageId: countGroupImageId,
+        GroupImageId: groupImageId,
       });
       return makeGroupProfile;
     } catch (err) {

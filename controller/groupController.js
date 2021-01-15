@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 /* eslint-disable dot-notation */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
