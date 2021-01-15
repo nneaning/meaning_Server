@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 /* eslint-disable dot-notation */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
@@ -53,8 +54,8 @@ module.exports = {
       );
       const countGroupImageId = await groupService.countGroupImageId();
 
-      const groupImageId = Number(groupId % countGroupImageId.length);
-
+      const groupImageId = Number(groupId % countGroupImageId.length + 1);
+      console.log(groupImageId);
       const createGroupProfile = await groupService.createGroupProfile(
         groupId,
         groupImageId,
