@@ -12,14 +12,15 @@
  <h1 align="center"> 🌱  About US </h1>
 
 
-| <h2>상수</h2> | <h2>기문</h2> |  
+| **상수** | **기문** |  
 |:-----:|:-----:|
-|  <img src="https://user-images.githubusercontent.com/59385491/103454428-4f093980-4d27-11eb-8342-4c027bc410a8.png" height=500>| <img src="https://user-images.githubusercontent.com/59385491/103454434-62b4a000-4d27-11eb-8cdf-f771a29173c0.png" height=500> |
+|  <img src="https://user-images.githubusercontent.com/59385491/103454428-4f093980-4d27-11eb-8342-4c027bc410a8.png" height=500 width=650> | <img src="https://user-images.githubusercontent.com/59385491/103454434-62b4a000-4d27-11eb-8cdf-f771a29173c0.png" height=500 width=650> |
 | **contact** : epitoneplus@gmail.com </br> **github**: [epitone](https://github.com/epitoneproject)|**contact** : kkm97351@gmail.com </br> **github**: [tributetothemoon](https://github.com/tributetothemoon)
 | ![sprint1](https://img.shields.io/badge/Meaning-sprint1-red) |![sprint1](https://img.shields.io/badge/Meaning-sprint1-red)  | 
 |RDB 설계, 배포환경구축 |RDB 설계, 배포환경구축 |
-|회원가입, 로그인, 토큰 발급, 마이페이지 | 타임스탬프, 타임스탬프 상세보기, 온보드 |
-|그룹리스트, 그룹 상세보기|그룹 참가신청, 그룹 생성|
+|회원가입, 로그인, 토큰 발급, 마이페이지, 하루 다짐 작성 | 타임스탬프, 타임스탬프 상세보기, 온보드, 하루 다짐 제공,|
+|그룹리스트, 그룹 상세보기, 그룹 생성, 그룹 이미지 등록|그룹 참가신청, 그룹 피드, 그룹 설정 정보 제공 |
+|자기회고 및 일기 작성, 짧은 독서 작성, 캘린더  |  온보드 정보 초기화, 사용자 가입된 그룹 정보 요청  |
 
 </br>
 </br>
@@ -27,63 +28,82 @@
 
 # 📝  List 
 
- **Setting** |  | **Introduction**| |**Communication**| |**Service**| |
- :---: | :---: | :---: | :---: |:---:|:---:|:---:|:---:
- 0 | [개발환경](#개발-환경)| 1 | [서비스 소개](#서비스-소개) |6 | [우리가 일하는 방법](#우리가-일하는-방법) |7 | [Dependencies](#Dependencies)
- |||2| [핵심 기능](#핵심-기능)|6-1 | [핵심가치](#핵심가치) |8 | [ER Diagram](#ER-Diagram) 
- |||3|[Work Flow](#work-flow)|6-2 | [칸반보드](#칸반보드) |9 | [Library](#Library)
-|||4|[기능 명세서](#기능-명세서)|6-3|[컨벤션 설정](#컨벤션-설정) | | 
-|||5|[API 명세서](#api-명세서)|| | |  |
+<div align=center> 
 
+| **Setting** |   **Introduction**  | **Communication**    | **Service**         | 
+| :---:       | :---:               | :---:                            | :---:   |
+| 💻 개발환경    | ☀️ 서비스 소개 | 👬 우리가 일하는 방법 | 🛠 Dependencies       |
+|             | 🚀 핵심 기능  | 👏🏻 핵심가치         | 🏠 Architecture      | 
+|             | ⚡️ Work Flow | 🎯 칸반보드         | 💥 ER Diagram       |
+|             | 💼 기능 명세서  |🕶 컨벤션 설정      |   📚 Library        | 
+|             | 🗂 API 명세서  |                      |                         | 
+
+</div>
 
 <br>
 <br>
 <br>
 
 # 💻 개발 환경  
+
+<div align=center>
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fnneaning%2Fmeaning_Server&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 ![박상수](https://img.shields.io/badge/Developer-%EB%B0%95%EC%83%81%EC%88%98-blue)
 ![김기문](https://img.shields.io/badge/Developer-%EA%B9%80%EA%B8%B0%EB%AC%B8-blue)
 [![Meaning](https://img.shields.io/badge/Meaning-Server-blue)](https://github.com/nneaning/meaning_Server)
 ![npm](https://img.shields.io/badge/npm-6.13.4-yellow)
 ![node](https://img.shields.io/badge/node-12.16.0-orange) 
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fnneaning%2Fmeaning_Server&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
-
-
-
-
 
 ![NodeJS](https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white)
 ![Express.js](https://img.shields.io/badge/express.js%20-%23404d59.svg?&style=for-the-badge)
 ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?&style=for-the-badge&logo=mysql&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS%20-%23FF9900.svg?&style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Nginx](https://img.shields.io/badge/nginx%20-%23009639.svg?&style=for-the-badge&logo=nginx&logoColor=white)
+
 ![Git](https://img.shields.io/badge/git%20-%23F05033.svg?&style=for-the-badge&logo=git&logoColor=white)
 ![Github](https://img.shields.io/badge/github%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)
 ![VSCode](https://camo.githubusercontent.com/6f0047f9b97eac434d5c7bef0867fbe51feff87d049c06c1164b45a55598032d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7673636f64652d3030374143433f7374796c653d666f722d7468652d6261646765266c6f676f436f6c6f723d7768697465266c6f676f3d76697375616c2d73747564696f2d636f6465)
 ![Slack](https://camo.githubusercontent.com/3c410d759dbc34dcb71012345f942e06b9c29bd4e54d7071e24d039e3a6dc584/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f536c61636b2d3441313534423f7374796c653d666f722d7468652d6261646765266c6f676f436f6c6f723d7768697465266c6f676f3d736c61636b)
 ![Notion](https://camo.githubusercontent.com/9974145fe23b6a9f07b5da3fd8fa7e881b6a501c7c78cc99a6a6bd8780759fa1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6f74696f6e2d3030303030303f7374796c653d666f722d7468652d6261646765266c6f676f436f6c6f723d7768697465266c6f676f3d6e6f74696f6e)
 
+</div>
 <br>
 <br>
 <br>
 
 # ☀️ 서비스 소개
 
+<br>
+<br>
+
 <div align="center">
 
-<img src="https://user-images.githubusercontent.com/59385491/103462749-c0b6a700-4d6a-11eb-9cc4-8865eb33a90a.png" height=200>
 
-<h3>모든 것은 바뀔 수 있고 나 역시 무언가를 바꿀 수 있습니다. </h3> </p>
+<img src="https://user-images.githubusercontent.com/59385491/104572713-5cafaf00-5697-11eb-8192-84ac6f57678e.png" height=200>
+<p>
+<img src="https://user-images.githubusercontent.com/59385491/104572745-66d1ad80-5697-11eb-9a09-12d1e9318e52.png" height=50>
 
-기상시간이 달라진다면, 당신도 변할 수 있습니다. 
 
-‘내’가 눈 뜨는 시간이 아닌, ‘해’가 뜨는 시간부터 하루를 시작해보세요. 
 
-미라클 모닝을 통해 **일찍 일어나는 습관으로 하루를 길게 보내고, 성장의 발판을 마련할 수 있습니다.**
 
-체계적으로 계획을 세우고 이를 규칙적으로 실천하면서 성취감을 얻어보세요.
+**<h3>모든 것은 바뀔 수 있고 나 역시 무언가를 바꿀 수 있습니다.</h3>**
 
-성장지향적인 사람들과 **목표를 공유**하면 우리는 함께, 더 멀리 갈 수 있습니다.
+기상 시간이 달라진다면, 당신도 변할 수 있습니다. 
+
+<br>
+
+'내'가 눈 뜨는 시간이 아닌, '해'가 뜨는 시간부터 하루를 시작하는 미라클 모닝.
+
+미닝을 통해 미라클 모닝에 도전하며 당신만의 의미있는 아침을 만들어 나가보세요.
+
+**일찍 일어나는 습관**으로 하루를 길게 보내면, **성장의 발판**을 마련할 수 있습니다.
+
+미닝과 함께 체계적인 계획을 세우고 이를 규칙적으로 실천하면서 성취감을 얻어보세요.
+
+성장지향적인 그룹원들과 목표를 공유한다면 우리는 함께, 더 멀리 갈 수 있습니다. 
+
 
 </div>
 
@@ -97,13 +117,16 @@
 <div align="center">
 
 
-| <h2>기능</h2> | <h2>참고사진</h2> |  
+| **기능** | **참고사진** |  
 |:-----:|:-----:|
 | <h2>타임스탬프</h2> </br> 사용자는 미라클 모닝 루틴 중에서 </br> '열심히 무언가 하는 행위'를 시간이 찍혀 있는 카메라로 찍어 기록할 수 있습니다. | <img src="https://user-images.githubusercontent.com/59385491/103470985-51b66e00-4dbd-11eb-90bd-a726b7b70fde.png" height=300>|
 | <h2>오늘 하루 다짐</h2> </br> 사용자는 매일 랜덤으로 주어지는 글귀를  </br> 3번 반복해서 읽으며 미라클모닝에 대한 동기부여를 받을 수 있습니다.|<img src="https://user-images.githubusercontent.com/59385491/103471083-c3db8280-4dbe-11eb-820c-2b30ad50aaef.png" height=300>
 | <h2>자기회고일기</h2> </br> 사용자는 나만 볼 수 있는 회고 및 감사 일기를 써보라는 문구를 읽고, </br> 새 하루를 시작하는 회고 및 감사 일기를 간단히 작성할 수 있습니다. |<img src="https://user-images.githubusercontent.com/59385491/103471128-6562d400-4dbf-11eb-8a90-907c29a4552f.png" height=300> | 
-|<h2>그룹 소통</h2> </br> 사용자는 다양한 그룹과 함께 미라클 모닝 을 즐길 수 있습니다.  </br> 참여하고 싶은 그룹에 가입하여 함께 목표를 향해 노력할 수 있습니다.  |<img src="https://user-images.githubusercontent.com/59385491/103471165-10738d80-4dc0-11eb-839f-0e6504434990.png" height=350> |
-||
+|<h2>캘린더</h2> </br> 사용자는 자신의 총 미션 성공 일수를 확인할 수 있고,    </br>  한달동안 자신이 얼마나 미션에 성공했는지 캘린더로 살펴볼 수 있습니다.  |<img src="https://user-images.githubusercontent.com/59385491/104400502-eaa37100-5595-11eb-8dac-3b60b8e8249e.png" height=350> |
+|<h2>마이페이지</h2> </br> 사용자는 자신이 찍은 타임스탬프를 한눈에 살펴볼 수 있고,  </br> 자신의 총 미션 성공 일수를 확인할 수 있습니다. |<img src="https://user-images.githubusercontent.com/59385491/104400745-45d56380-5596-11eb-899d-90f3e5873b02.png" height=350>  |
+|<h2>그룹 소통</h2> </br> 사용자는 다양한 그룹과 함께 미라클 모닝 을 즐길 수 있습니다.  </br> 참여하고 싶은 그룹에 가입하여 함께 목표를 향해 노력할 수 있습니다. |<img src="https://user-images.githubusercontent.com/59385491/103471165-10738d80-4dc0-11eb-839f-0e6504434990.png" height=350>  |
+|<h2>그룹 피드</h2> </br> 다른 사용자의 미라클모닝 인증 내용을 한눈에 살펴볼 수 있고,  </br> 그룹의 총인원수, 다른 사용자의 기상 시간을 확인할 수 있습니다. |<img src="https://user-images.githubusercontent.com/59385491/104401053-c300d880-5596-11eb-9d5a-5557907b1c8c.png" height=350>  |
+
 
 
 
@@ -114,10 +137,17 @@
 </br>
 </br>
 
-# ⚡️ Work Flow 
+# ⚡️ Work Flow
 
--  추가 예정
+<div align="center">
 
+
+<img src="https://user-images.githubusercontent.com/59385491/104686958-a7860100-5741-11eb-95a6-690cd0993957.png" height=3650>
+
+
+<p>
+
+</div>
 
 </br>
 </br>
@@ -151,7 +181,7 @@
 
 ## 🎯 칸반보드 
 
-- [🧑🏻‍💻 서버팀 칸반보드](https://www.notion.so/a4317dc11b60486eaa2300983b7b3585)
+- [🧑🏻‍💻 서버팀 칸반보드](https://github.com/nneaning/meaning_Server/projects/1)
 
 </br>
 </br>
@@ -179,38 +209,34 @@
 
 # 🛠 Dependencies
 
-```
-"dependencies": {
-    "aws-sdk": "^2.820.0",
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jsonwebtoken": "^8.5.1",
-    "morgan": "~1.9.1",
-    "multer": "^1.4.2",
-    "multer-s3": "^2.9.0",
-    "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5",
-    "sequelize-cli": "^6.2.0"
-  },
-  "devDependencies": {
-    "eslint": "^7.15.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^7.0.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-prettier": "^3.3.0",
-    "prettier": "2.2.1"
-  }
-```
+<div align=center>
+<img src="https://user-images.githubusercontent.com/59385491/104410947-bd15f200-55ac-11eb-9568-0d354eaea5bb.png" height=900>
+</div>
 
 </br>
+</br>
+</br>
+
+
+
+# 🏠 Architecture
+
+<div align=center>
+
+<img src="https://user-images.githubusercontent.com/59385491/104458654-01c27d00-55ef-11eb-9fc8-ca60bd732e73.png" height=340>
+
+</div>
 
 </br>
+</br>
+</br>
+
 
 # 💥 ER-Diagram
 
-<img src="https://user-images.githubusercontent.com/59385491/103462959-3ec77d80-4d6c-11eb-9313-59f30d12b778.png" height=700>
+<div align=center>
+<img src="https://user-images.githubusercontent.com/59385491/104401623-eb3d0700-5597-11eb-9c7d-6a7064c45ea3.png" height=750>
+</div>
 
 </br>
 </br>
@@ -223,5 +249,6 @@
 - [Express](https://expressjs.com/ko/) : NodeJs Framework
 - [NPM](https://www.npmjs.com/) : NodeJS package manager
 - [PM2](https://pm2.io/) : NodeJS process manager
+- [Lodash](https://lodash.com/) : 자바스크립트 유틸리티 라이브러리
 
 <br>

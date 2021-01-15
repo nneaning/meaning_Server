@@ -313,7 +313,6 @@ module.exports = {
   getDailyMaxim: async (req, res) => {
     try {
       const date = dayjs().format(dateTimeModule.FORMAT_DATE);
-      console.log(date);
       const dailyMaxim = await userService.getDailyMaximByDate(date);
 
       return res

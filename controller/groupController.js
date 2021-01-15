@@ -112,7 +112,6 @@ module.exports = {
 
     try {
       const getGroupAll = await groupService.findAllGroupList(Number(offset));
-
       const getImageGroupList = [];
       const getNoImageGroupList = [];
 
