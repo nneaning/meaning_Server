@@ -139,15 +139,10 @@
 
 # ⚡️ Work Flow
 
-<div align="center">
 
-
-<img src="https://user-images.githubusercontent.com/59385491/104686958-a7860100-5741-11eb-95a6-690cd0993957.png" height=3650>
-
+<img src="https://user-images.githubusercontent.com/59385491/104686958-a7860100-5741-11eb-95a6-690cd0993957.png" height=3700>
 
 <p>
-
-</div>
 
 </br>
 </br>
@@ -223,7 +218,7 @@
 
 <div align=center>
 
-<img src="https://user-images.githubusercontent.com/59385491/104458654-01c27d00-55ef-11eb-9fc8-ca60bd732e73.png" height=340>
+<img src="https://user-images.githubusercontent.com/59385491/104846987-eb832c80-5920-11eb-946c-92a1798cd901.png" height=390>
 
 </div>
 
