@@ -32,6 +32,7 @@ module.exports = {
   READ_TIMESTAMP_ALL_FAIL: '전체 타임스탬프 조회 실패',
   READ_TIMESTAMP_SUCCESS: '타임스탬프 조회 성공',
   READ_TIMESTAMP_FAIL: '타임스탬프 조회 실패',
+  NO_IMAGE: '이미지 파일을 읽어올 수 없습니다.',
   INVALID_TIMESTAMP_ID: '유효하지 않은 타임스탬프의 id값입니다.',
 
   /* 캘린더 */

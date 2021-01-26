@@ -26,7 +26,19 @@ module.exports = {
     try {
       const userId = req.decoded.id;
       const wakeUpTime = await userService.getWakeUpTime(userId);
+
+      if (!req.file) {
+        return res
+          .status(statusCode.BAD_REQUEST)
+          .send(
+            util.fail(
+              statusCode.BAD_REQUEST,
+              responseMessage.NO_IMAGE,
+            ),
+          );
+      }
       const timeStampImageUrl = req.file.location;
+
       const { dateTime, timeStampContents } = req.body;
 
       if (!dateTime || !timeStampContents || !timeStampImageUrl) {
