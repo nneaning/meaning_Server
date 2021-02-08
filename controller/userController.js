@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable arrow-parens */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-return-assign */
@@ -13,6 +14,9 @@ const dateTimeModule = require('../modules/dateTimeModule');
 const { dayjs } = dateTimeModule;
 
 const userService = require('../service/userService');
+
+const IMAGE_ORIGIN_PATH = '/images/origin';
+const IMAGE_W200_PATH = '/images/w_200';
 
 module.exports = {
   signup: async (req, res) => {
@@ -125,6 +129,10 @@ module.exports = {
 
       getMySuccessDay.forEach(day =>
         (successDays += day.status));
+
+      for (const { dataValues } of getMyPage) { // send resized image URL
+        dataValues.timeStampImageUrl = dataValues.timeStampImageUrl.replace(IMAGE_ORIGIN_PATH, IMAGE_W200_PATH);
+      }
 
       return res
         .status(statusCode.OK)
